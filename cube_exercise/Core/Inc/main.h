@@ -51,7 +51,7 @@ extern "C" {
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
-#include "can1.h"
+#include "can_transmit.h"
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

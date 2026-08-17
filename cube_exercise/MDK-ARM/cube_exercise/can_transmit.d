@@ -1,4 +1,5 @@
-cube_exercise/pwm.o: ..\hardware\Src\PWM.c ..\hardware\Inc\PWM.h \
+cube_exercise/can_transmit.o: ..\hardware\Src\can_transmit.c \
+  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h \
   ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -42,8 +43,6 @@ cube_exercise/pwm.o: ..\hardware\Src\PWM.c ..\hardware\Inc\PWM.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\hardware\Inc\can_transmit.h \
-  ..\hardware\Inc\uart_transmit.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Core\Inc\usart.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\user\Inc\myostask.h \
-  ..\hardware\Inc\beep.h ..\hardware\Inc\led.h
+  ..\hardware\Inc\beep.h ..\hardware\Inc\led.h ..\hardware\Inc\PWM.h

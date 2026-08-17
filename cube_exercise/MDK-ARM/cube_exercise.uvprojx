@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F405xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../user/Inc;../hardware/Inc</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../hardware/Inc;../user/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1562,19 +1562,19 @@
               <FilePath>..\hardware\Src\led.c</FilePath>
             </File>
             <File>
-              <FileName>can1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\hardware\Src\can1.c</FilePath>
-            </File>
-            <File>
               <FileName>PWM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\PWM.c</FilePath>
             </File>
             <File>
-              <FileName>uart.c</FileName>
+              <FileName>can_transmit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\hardware\Src\uart.c</FilePath>
+              <FilePath>..\hardware\Src\can_transmit.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_transmit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\uart_transmit.c</FilePath>
             </File>
           </Files>
         </Group>

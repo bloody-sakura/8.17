@@ -9,8 +9,8 @@
 #include "beep.h"
 #include "led.h"
 #include "PWM.h"
-#include "can1.h"
-#include "uart.h"
+#include "can_transmit.h"
+#include "uart_transmit.h"
 typedef enum
 {
     IDLE = 0,

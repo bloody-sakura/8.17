@@ -2,7 +2,7 @@
 #define CAN1_H
 
 
-#include "uart.h"
+#include "uart_transmit.h"
 #include "can.h"
 extern uint8_t RxData[];
 extern CAN_RxHeaderTypeDef RxHeader;

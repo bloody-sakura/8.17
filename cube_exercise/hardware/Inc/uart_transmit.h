@@ -6,7 +6,7 @@
 #include "string.h"
 #include "math.h"
 #include "myostask.h"
-#include "can1.h"
+#include "can_transmit.h"
 extern volatile uint8_t rx_buffer[];
 extern volatile uint8_t tx_buffer[];
 

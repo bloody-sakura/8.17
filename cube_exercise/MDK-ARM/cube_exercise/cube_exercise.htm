@@ -3,7 +3,7 @@
 <title>Static Call Graph - [cube_exercise\cube_exercise.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image cube_exercise\cube_exercise.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sun Aug 16 14:14:53 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Mon Aug 17 10:32:48 2026
 <BR><P>
 <H3>Maximum Stack Usage =        348 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -722,7 +722,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_IRQHandler
 </UL>
 
-<P><STRONG><a name="[8b]"></a>HAL_CAN_RxFifo0MsgPendingCallback</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback))
+<P><STRONG><a name="[8b]"></a>HAL_CAN_RxFifo0MsgPendingCallback</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_CAN_RxFifo0MsgPendingCallback &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_GetRxMessage
@@ -1168,7 +1168,7 @@ Global Symbols
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxEventCallback
 </UL>
 
-<P><STRONG><a name="[cf]"></a>HAL_UARTEx_RxEventCallback</STRONG> (Thumb, 198 bytes, Stack size 56 bytes, uart.o(.text.HAL_UARTEx_RxEventCallback))
+<P><STRONG><a name="[cf]"></a>HAL_UARTEx_RxEventCallback</STRONG> (Thumb, 198 bytes, Stack size 56 bytes, uart_transmit.o(.text.HAL_UARTEx_RxEventCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = HAL_UARTEx_RxEventCallback &rArr; HAL_UARTEx_ReceiveToIdle_IT &rArr; UART_Start_Receive_IT
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_AddTxMessage
@@ -1428,7 +1428,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(.text.MX_FREERTOS_Init)
 </UL>
-<P><STRONG><a name="[f6]"></a>UART_Start_Receive</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, uart.o(.text.UART_Start_Receive))
+<P><STRONG><a name="[f6]"></a>UART_Start_Receive</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, uart_transmit.o(.text.UART_Start_Receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = UART_Start_Receive &rArr; HAL_UARTEx_ReceiveToIdle_IT &rArr; UART_Start_Receive_IT
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_ReceiveToIdle_IT
@@ -1488,7 +1488,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Beep_Task
 </UL>
 
-<P><STRONG><a name="[f3]"></a>can_transmit</STRONG> (Thumb, 54 bytes, Stack size 40 bytes, can1.o(.text.can_transmit))
+<P><STRONG><a name="[f3]"></a>can_transmit</STRONG> (Thumb, 54 bytes, Stack size 40 bytes, can_transmit.o(.text.can_transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = can_transmit &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_AddTxMessage
@@ -1800,7 +1800,7 @@ Global Symbols
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortStartScheduler
 </UL>
 
-<P><STRONG><a name="[f7]"></a>vofa_transmit</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, uart.o(.text.vofa_transmit))
+<P><STRONG><a name="[f7]"></a>vofa_transmit</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, uart_transmit.o(.text.vofa_transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = vofa_transmit &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout &rArr; UART_EndRxTransfer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit

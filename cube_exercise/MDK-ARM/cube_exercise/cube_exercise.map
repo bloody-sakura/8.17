@@ -38,7 +38,7 @@ Section Cross References
     main.o(.text.main) refers to can.o(.text.MX_CAN1_Init) for MX_CAN1_Init
     main.o(.text.main) refers to usart.o(.text.MX_USART1_UART_Init) for MX_USART1_UART_Init
     main.o(.text.main) refers to tim.o(.text.MX_TIM3_Init) for MX_TIM3_Init
-    main.o(.text.main) refers to uart.o(.text.UART_Start_Receive) for UART_Start_Receive
+    main.o(.text.main) refers to uart_transmit.o(.text.UART_Start_Receive) for UART_Start_Receive
     main.o(.text.main) refers to beep.o(.text.beep_init) for beep_init
     main.o(.text.main) refers to cmsis_os2.o(.text.osKernelInitialize) for osKernelInitialize
     main.o(.text.main) refers to freertos.o(.text.MX_FREERTOS_Init) for MX_FREERTOS_Init
@@ -217,7 +217,7 @@ Section Cross References
     stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_TxMailbox2CompleteCallback) for HAL_CAN_TxMailbox2CompleteCallback
     stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_TxMailbox2AbortCallback) for HAL_CAN_TxMailbox2AbortCallback
     stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo0FullCallback) for HAL_CAN_RxFifo0FullCallback
-    stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) for HAL_CAN_RxFifo0MsgPendingCallback
+    stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) for HAL_CAN_RxFifo0MsgPendingCallback
     stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo1FullCallback) for HAL_CAN_RxFifo1FullCallback
     stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo1MsgPendingCallback) for HAL_CAN_RxFifo1MsgPendingCallback
     stm32f4xx_hal_can.o(.text.HAL_CAN_IRQHandler) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_SleepCallback) for HAL_CAN_SleepCallback
@@ -993,11 +993,11 @@ Section Cross References
     stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to stm32f4xx_hal_dma.o(.text.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
     stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_ErrorCallback) for HAL_UART_ErrorCallback
     stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to stm32f4xx_hal_dma.o(.text.HAL_DMA_Abort) for HAL_DMA_Abort
-    stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to uart.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
+    stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
     stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to stm32f4xx_hal_uart.o(.text.UART_Transmit_IT) for UART_Transmit_IT
     stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) refers to stm32f4xx_hal_uart.o(.text.UART_EndTransmit_IT) for UART_EndTransmit_IT
     stm32f4xx_hal_uart.o(.ARM.exidx.text.HAL_UART_IRQHandler) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler) for [Anonymous Symbol]
-    stm32f4xx_hal_uart.o(.text.UART_Receive_IT) refers to uart.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
+    stm32f4xx_hal_uart.o(.text.UART_Receive_IT) refers to uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
     stm32f4xx_hal_uart.o(.text.UART_Receive_IT) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_RxCpltCallback) for HAL_UART_RxCpltCallback
     stm32f4xx_hal_uart.o(.ARM.exidx.text.UART_Receive_IT) refers to stm32f4xx_hal_uart.o(.text.UART_Receive_IT) for [Anonymous Symbol]
     stm32f4xx_hal_uart.o(.text.UART_DMAAbortOnError) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_ErrorCallback) for HAL_UART_ErrorCallback
@@ -1018,10 +1018,10 @@ Section Cross References
     stm32f4xx_hal_uart.o(.ARM.exidx.text.HAL_HalfDuplex_EnableReceiver) refers to stm32f4xx_hal_uart.o(.text.HAL_HalfDuplex_EnableReceiver) for [Anonymous Symbol]
     stm32f4xx_hal_uart.o(.ARM.exidx.text.HAL_UART_GetState) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_GetState) for [Anonymous Symbol]
     stm32f4xx_hal_uart.o(.ARM.exidx.text.HAL_UART_GetError) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_GetError) for [Anonymous Symbol]
-    stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt) refers to uart.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
+    stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt) refers to uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
     stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_RxCpltCallback) for HAL_UART_RxCpltCallback
     stm32f4xx_hal_uart.o(.ARM.exidx.text.UART_DMAReceiveCplt) refers to stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt) for [Anonymous Symbol]
-    stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt) refers to uart.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
+    stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt) refers to uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) for HAL_UARTEx_RxEventCallback
     stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_RxHalfCpltCallback) for HAL_UART_RxHalfCpltCallback
     stm32f4xx_hal_uart.o(.ARM.exidx.text.UART_DMARxHalfCplt) refers to stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt) for [Anonymous Symbol]
     system_stm32f4xx.o(.ARM.exidx.text.SystemInit) refers to system_stm32f4xx.o(.text.SystemInit) for [Anonymous Symbol]
@@ -2083,12 +2083,12 @@ Section Cross References
     myostask.o(.text.Beep_Task) refers to myostask.o(.bss.last_mode) for last_mode
     myostask.o(.text.Beep_Task) refers to myostask.o(.bss.buzzer_count) for buzzer_count
     myostask.o(.text.Beep_Task) refers to myostask.o(.bss.is_beep_on) for is_beep_on
-    myostask.o(.text.Beep_Task) refers to can1.o(.bss.buzzer_times) for buzzer_times
+    myostask.o(.text.Beep_Task) refers to can_transmit.o(.bss.buzzer_times) for buzzer_times
     myostask.o(.text.Beep_Task) refers to beep.o(.text.beep_on) for beep_on
     myostask.o(.text.Beep_Task) refers to tasks.o(.text.vTaskDelayUntil) for vTaskDelayUntil
     myostask.o(.ARM.exidx.text.Beep_Task) refers to myostask.o(.text.Beep_Task) for [Anonymous Symbol]
     myostask.o(.text.Transmit_Task) refers to tasks.o(.text.xTaskGetTickCount) for xTaskGetTickCount
-    myostask.o(.text.Transmit_Task) refers to can1.o(.text.can_transmit) for can_transmit
+    myostask.o(.text.Transmit_Task) refers to can_transmit.o(.text.can_transmit) for can_transmit
     myostask.o(.text.Transmit_Task) refers to tasks.o(.text.vTaskDelayUntil) for vTaskDelayUntil
     myostask.o(.ARM.exidx.text.Transmit_Task) refers to myostask.o(.text.Transmit_Task) for [Anonymous Symbol]
     myostask.o(.text.Idle_Task) refers to tasks.o(.text.xTaskGetTickCount) for xTaskGetTickCount
@@ -2104,7 +2104,7 @@ Section Cross References
     myostask.o(.text.Idle_Task) refers to tasks.o(.text.vTaskDelayUntil) for vTaskDelayUntil
     myostask.o(.ARM.exidx.text.Idle_Task) refers to myostask.o(.text.Idle_Task) for [Anonymous Symbol]
     myostask.o(.text.Vofa_Transmit) refers to tasks.o(.text.xTaskGetTickCount) for xTaskGetTickCount
-    myostask.o(.text.Vofa_Transmit) refers to uart.o(.text.vofa_transmit) for vofa_transmit
+    myostask.o(.text.Vofa_Transmit) refers to uart_transmit.o(.text.vofa_transmit) for vofa_transmit
     myostask.o(.text.Vofa_Transmit) refers to tasks.o(.text.vTaskDelayUntil) for vTaskDelayUntil
     myostask.o(.ARM.exidx.text.Vofa_Transmit) refers to myostask.o(.text.Vofa_Transmit) for [Anonymous Symbol]
     beep.o(.text.beep_on) refers to stm32f4xx_hal_gpio.o(.text.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
@@ -2117,16 +2117,6 @@ Section Cross References
     led.o(.ARM.exidx.text.led_on) refers to led.o(.text.led_on) for [Anonymous Symbol]
     led.o(.text.led_off) refers to stm32f4xx_hal_gpio.o(.text.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
     led.o(.ARM.exidx.text.led_off) refers to led.o(.text.led_off) for [Anonymous Symbol]
-    can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can1.o(.bss.RxHeader) for RxHeader
-    can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can1.o(.bss.RxData) for RxData
-    can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_GetRxMessage) for HAL_CAN_GetRxMessage
-    can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can1.o(.bss.Float_Data) for Float_Data
-    can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to myostask.o(.bss.state_mode) for state_mode
-    can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can1.o(.bss.buzzer_times) for buzzer_times
-    can1.o(.ARM.exidx.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) for [Anonymous Symbol]
-    can1.o(.text.can_transmit) refers to can.o(.bss.hcan1) for hcan1
-    can1.o(.text.can_transmit) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_AddTxMessage) for HAL_CAN_AddTxMessage
-    can1.o(.ARM.exidx.text.can_transmit) refers to can1.o(.text.can_transmit) for [Anonymous Symbol]
     pwm.o(.text.TIM_PeriodElapsedCallback) refers to pwm.o(.data.pwm_cycle) for pwm_cycle
     pwm.o(.text.TIM_PeriodElapsedCallback) refers to pwm.o(.bss.TIM_PeriodElapsedCallback.time_count) for TIM_PeriodElapsedCallback.time_count
     pwm.o(.text.TIM_PeriodElapsedCallback) refers to pwm.o(.bss.TIM_PeriodElapsedCallback.trend) for TIM_PeriodElapsedCallback.trend
@@ -2136,22 +2126,32 @@ Section Cross References
     pwm.o(.text.pwm) refers to stm32f4xx_hal_tim.o(.text.HAL_TIM_Base_Start_IT) for HAL_TIM_Base_Start_IT
     pwm.o(.text.pwm) refers to stm32f4xx_hal_tim.o(.text.HAL_TIM_PWM_Start) for HAL_TIM_PWM_Start
     pwm.o(.ARM.exidx.text.pwm) refers to pwm.o(.text.pwm) for [Anonymous Symbol]
-    uart.o(.text.UART_Start_Receive) refers to usart.o(.bss.huart1) for huart1
-    uart.o(.text.UART_Start_Receive) refers to uart.o(.bss.rx_buffer) for rx_buffer
-    uart.o(.text.UART_Start_Receive) refers to stm32f4xx_hal_uart.o(.text.HAL_UARTEx_ReceiveToIdle_IT) for HAL_UARTEx_ReceiveToIdle_IT
-    uart.o(.ARM.exidx.text.UART_Start_Receive) refers to uart.o(.text.UART_Start_Receive) for [Anonymous Symbol]
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to uart.o(.bss.rx_buffer) for rx_buffer
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to myostask.o(.bss.state_mode) for state_mode
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to pwm.o(.data.pwm_cycle) for pwm_cycle
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to can.o(.bss.hcan1) for hcan1
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_AddTxMessage) for HAL_CAN_AddTxMessage
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to usart.o(.bss.huart1) for huart1
-    uart.o(.text.HAL_UARTEx_RxEventCallback) refers to stm32f4xx_hal_uart.o(.text.HAL_UARTEx_ReceiveToIdle_IT) for HAL_UARTEx_ReceiveToIdle_IT
-    uart.o(.ARM.exidx.text.HAL_UARTEx_RxEventCallback) refers to uart.o(.text.HAL_UARTEx_RxEventCallback) for [Anonymous Symbol]
-    uart.o(.text.vofa_transmit) refers to usart.o(.bss.huart1) for huart1
-    uart.o(.text.vofa_transmit) refers to can1.o(.bss.Float_Data) for Float_Data
-    uart.o(.text.vofa_transmit) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_Transmit) for HAL_UART_Transmit
-    uart.o(.ARM.exidx.text.vofa_transmit) refers to uart.o(.text.vofa_transmit) for [Anonymous Symbol]
+    can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can_transmit.o(.bss.RxHeader) for RxHeader
+    can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can_transmit.o(.bss.RxData) for RxData
+    can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_GetRxMessage) for HAL_CAN_GetRxMessage
+    can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can_transmit.o(.bss.Float_Data) for Float_Data
+    can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to myostask.o(.bss.state_mode) for state_mode
+    can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can_transmit.o(.bss.buzzer_times) for buzzer_times
+    can_transmit.o(.ARM.exidx.text.HAL_CAN_RxFifo0MsgPendingCallback) refers to can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback) for [Anonymous Symbol]
+    can_transmit.o(.text.can_transmit) refers to can.o(.bss.hcan1) for hcan1
+    can_transmit.o(.text.can_transmit) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_AddTxMessage) for HAL_CAN_AddTxMessage
+    can_transmit.o(.ARM.exidx.text.can_transmit) refers to can_transmit.o(.text.can_transmit) for [Anonymous Symbol]
+    uart_transmit.o(.text.UART_Start_Receive) refers to usart.o(.bss.huart1) for huart1
+    uart_transmit.o(.text.UART_Start_Receive) refers to uart_transmit.o(.bss.rx_buffer) for rx_buffer
+    uart_transmit.o(.text.UART_Start_Receive) refers to stm32f4xx_hal_uart.o(.text.HAL_UARTEx_ReceiveToIdle_IT) for HAL_UARTEx_ReceiveToIdle_IT
+    uart_transmit.o(.ARM.exidx.text.UART_Start_Receive) refers to uart_transmit.o(.text.UART_Start_Receive) for [Anonymous Symbol]
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to uart_transmit.o(.bss.rx_buffer) for rx_buffer
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to myostask.o(.bss.state_mode) for state_mode
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to pwm.o(.data.pwm_cycle) for pwm_cycle
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to can.o(.bss.hcan1) for hcan1
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to stm32f4xx_hal_can.o(.text.HAL_CAN_AddTxMessage) for HAL_CAN_AddTxMessage
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to usart.o(.bss.huart1) for huart1
+    uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) refers to stm32f4xx_hal_uart.o(.text.HAL_UARTEx_ReceiveToIdle_IT) for HAL_UARTEx_ReceiveToIdle_IT
+    uart_transmit.o(.ARM.exidx.text.HAL_UARTEx_RxEventCallback) refers to uart_transmit.o(.text.HAL_UARTEx_RxEventCallback) for [Anonymous Symbol]
+    uart_transmit.o(.text.vofa_transmit) refers to usart.o(.bss.huart1) for huart1
+    uart_transmit.o(.text.vofa_transmit) refers to can_transmit.o(.bss.Float_Data) for Float_Data
+    uart_transmit.o(.text.vofa_transmit) refers to stm32f4xx_hal_uart.o(.text.HAL_UART_Transmit) for HAL_UART_Transmit
+    uart_transmit.o(.ARM.exidx.text.vofa_transmit) refers to uart_transmit.o(.text.vofa_transmit) for [Anonymous Symbol]
     rt_memcpy_v6.o(.text) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     aeabi_memset.o(.text) refers to rt_memclr.o(.text) for _memset
     aeabi_memset4.o(.text) refers to rt_memclr_w.o(.text) for _memset_w
@@ -3634,18 +3634,18 @@ Removing Unused input sections from the image.
     Removing led.o(.text), (0 bytes).
     Removing led.o(.ARM.exidx.text.led_on), (8 bytes).
     Removing led.o(.ARM.exidx.text.led_off), (8 bytes).
-    Removing can1.o(.text), (0 bytes).
-    Removing can1.o(.ARM.exidx.text.HAL_CAN_RxFifo0MsgPendingCallback), (8 bytes).
-    Removing can1.o(.ARM.exidx.text.can_transmit), (8 bytes).
-    Removing can1.o(.bss.Vofa_Transmit_Signal), (1 bytes).
-    Removing can1.o(.rodata..L__const.can_transmit.TxData), (2 bytes).
     Removing pwm.o(.text), (0 bytes).
     Removing pwm.o(.ARM.exidx.text.TIM_PeriodElapsedCallback), (8 bytes).
     Removing pwm.o(.ARM.exidx.text.pwm), (8 bytes).
-    Removing uart.o(.text), (0 bytes).
-    Removing uart.o(.ARM.exidx.text.UART_Start_Receive), (8 bytes).
-    Removing uart.o(.ARM.exidx.text.HAL_UARTEx_RxEventCallback), (8 bytes).
-    Removing uart.o(.ARM.exidx.text.vofa_transmit), (8 bytes).
+    Removing can_transmit.o(.text), (0 bytes).
+    Removing can_transmit.o(.ARM.exidx.text.HAL_CAN_RxFifo0MsgPendingCallback), (8 bytes).
+    Removing can_transmit.o(.ARM.exidx.text.can_transmit), (8 bytes).
+    Removing can_transmit.o(.bss.Vofa_Transmit_Signal), (1 bytes).
+    Removing can_transmit.o(.rodata..L__const.can_transmit.TxData), (2 bytes).
+    Removing uart_transmit.o(.text), (0 bytes).
+    Removing uart_transmit.o(.ARM.exidx.text.UART_Start_Receive), (8 bytes).
+    Removing uart_transmit.o(.ARM.exidx.text.HAL_UARTEx_RxEventCallback), (8 bytes).
+    Removing uart_transmit.o(.ARM.exidx.text.vofa_transmit), (8 bytes).
 
 1372 unused section(s) (total 88140 bytes) removed from the image.
 
@@ -3723,7 +3723,7 @@ Image Symbol Table
     PWM.c                                    0x00000000   Number         0  pwm.o ABSOLUTE
     beep.c                                   0x00000000   Number         0  beep.o ABSOLUTE
     can.c                                    0x00000000   Number         0  can.o ABSOLUTE
-    can1.c                                   0x00000000   Number         0  can1.o ABSOLUTE
+    can_transmit.c                           0x00000000   Number         0  can_transmit.o ABSOLUTE
     cmsis_os2.c                              0x00000000   Number         0  cmsis_os2.o ABSOLUTE
     croutine.c                               0x00000000   Number         0  croutine.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
@@ -3764,7 +3764,7 @@ Image Symbol Table
     tasks.c                                  0x00000000   Number         0  tasks.o ABSOLUTE
     tim.c                                    0x00000000   Number         0  tim.o ABSOLUTE
     timers.c                                 0x00000000   Number         0  timers.o ABSOLUTE
-    uart.c                                   0x00000000   Number         0  uart.o ABSOLUTE
+    uart_transmit.c                          0x00000000   Number         0  uart_transmit.o ABSOLUTE
     usart.c                                  0x00000000   Number         0  usart.o ABSOLUTE
     RESET                                    0x08000000   Section      392  startup_stm32f405xx.o(RESET)
     !!!main                                  0x08000188   Section        8  __main.o(!!!main)
@@ -3849,7 +3849,7 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080010f0   Section        0  stm32f4xx_hal_can.o(.text.HAL_CAN_Init)
     [Anonymous Symbol]                       0x080012d0   Section        0  can.o(.text.HAL_CAN_MspInit)
     [Anonymous Symbol]                       0x08001388   Section        0  stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo0FullCallback)
-    [Anonymous Symbol]                       0x08001390   Section        0  can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback)
+    [Anonymous Symbol]                       0x08001390   Section        0  can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback)
     [Anonymous Symbol]                       0x0800142c   Section        0  stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo1FullCallback)
     [Anonymous Symbol]                       0x08001434   Section        0  stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo1MsgPendingCallback)
     [Anonymous Symbol]                       0x0800143c   Section        0  stm32f4xx_hal_can.o(.text.HAL_CAN_SleepCallback)
@@ -3905,7 +3905,7 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080037e0   Section        0  main.o(.text.HAL_TIM_PeriodElapsedCallback)
     [Anonymous Symbol]                       0x08003808   Section        0  stm32f4xx_hal_tim.o(.text.HAL_TIM_TriggerCallback)
     [Anonymous Symbol]                       0x08003810   Section        0  stm32f4xx_hal_uart.o(.text.HAL_UARTEx_ReceiveToIdle_IT)
-    [Anonymous Symbol]                       0x080038d4   Section        0  uart.o(.text.HAL_UARTEx_RxEventCallback)
+    [Anonymous Symbol]                       0x080038d4   Section        0  uart_transmit.o(.text.HAL_UARTEx_RxEventCallback)
     [Anonymous Symbol]                       0x0800399c   Section        0  stm32f4xx_hal_uart.o(.text.HAL_UART_ErrorCallback)
     [Anonymous Symbol]                       0x080039a4   Section        0  stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler)
     [Anonymous Symbol]                       0x08003e00   Section        0  stm32f4xx_hal_uart.o(.text.HAL_UART_Init)
@@ -3965,7 +3965,7 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080050d8   Section        0  stm32f4xx_hal_uart.o(.text.UART_Receive_IT)
     UART_SetConfig                           0x08005241   Thumb Code   314  stm32f4xx_hal_uart.o(.text.UART_SetConfig)
     [Anonymous Symbol]                       0x08005240   Section        0  stm32f4xx_hal_uart.o(.text.UART_SetConfig)
-    [Anonymous Symbol]                       0x0800537c   Section        0  uart.o(.text.UART_Start_Receive)
+    [Anonymous Symbol]                       0x0800537c   Section        0  uart_transmit.o(.text.UART_Start_Receive)
     [Anonymous Symbol]                       0x08005398   Section        0  stm32f4xx_hal_uart.o(.text.UART_Start_Receive_IT)
     UART_Transmit_IT                         0x080053fd   Thumb Code   148  stm32f4xx_hal_uart.o(.text.UART_Transmit_IT)
     [Anonymous Symbol]                       0x080053fc   Section        0  stm32f4xx_hal_uart.o(.text.UART_Transmit_IT)
@@ -3987,7 +3987,7 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080056a4   Section        0  beep.o(.text.beep_init)
     [Anonymous Symbol]                       0x080056ac   Section        0  beep.o(.text.beep_off)
     [Anonymous Symbol]                       0x080056c0   Section        0  beep.o(.text.beep_on)
-    [Anonymous Symbol]                       0x080056d4   Section        0  can1.o(.text.can_transmit)
+    [Anonymous Symbol]                       0x080056d4   Section        0  can_transmit.o(.text.can_transmit)
     [Anonymous Symbol]                       0x0800570c   Section        0  led.o(.text.led_off)
     [Anonymous Symbol]                       0x08005728   Section        0  led.o(.text.led_on)
     [Anonymous Symbol]                       0x08005744   Section        0  main.o(.text.main)
@@ -4078,7 +4078,7 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08007168   Section        0  tasks.o(.text.vTaskStartScheduler)
     [Anonymous Symbol]                       0x08007248   Section        0  tasks.o(.text.vTaskSuspendAll)
     [Anonymous Symbol]                       0x08007258   Section        0  tasks.o(.text.vTaskSwitchContext)
-    [Anonymous Symbol]                       0x08007320   Section        0  uart.o(.text.vofa_transmit)
+    [Anonymous Symbol]                       0x08007320   Section        0  uart_transmit.o(.text.vofa_transmit)
     [Anonymous Symbol]                       0x0800733c   Section        0  port.o(.text.xPortStartScheduler)
     [Anonymous Symbol]                       0x08007494   Section        0  port.o(.text.xPortSysTickHandler)
     [Anonymous Symbol]                       0x080074d0   Section        0  queue.o(.text.xQueueGenericCreateStatic)
@@ -4415,7 +4415,7 @@ Image Symbol Table
     HAL_CAN_Init                             0x080010f1   Thumb Code   478  stm32f4xx_hal_can.o(.text.HAL_CAN_Init)
     HAL_CAN_MspInit                          0x080012d1   Thumb Code   184  can.o(.text.HAL_CAN_MspInit)
     HAL_CAN_RxFifo0FullCallback              0x08001389   Thumb Code     8  stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo0FullCallback)
-    HAL_CAN_RxFifo0MsgPendingCallback        0x08001391   Thumb Code   154  can1.o(.text.HAL_CAN_RxFifo0MsgPendingCallback)
+    HAL_CAN_RxFifo0MsgPendingCallback        0x08001391   Thumb Code   154  can_transmit.o(.text.HAL_CAN_RxFifo0MsgPendingCallback)
     HAL_CAN_RxFifo1FullCallback              0x0800142d   Thumb Code     8  stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo1FullCallback)
     HAL_CAN_RxFifo1MsgPendingCallback        0x08001435   Thumb Code     8  stm32f4xx_hal_can.o(.text.HAL_CAN_RxFifo1MsgPendingCallback)
     HAL_CAN_SleepCallback                    0x0800143d   Thumb Code     8  stm32f4xx_hal_can.o(.text.HAL_CAN_SleepCallback)
@@ -4471,7 +4471,7 @@ Image Symbol Table
     HAL_TIM_PeriodElapsedCallback            0x080037e1   Thumb Code    38  main.o(.text.HAL_TIM_PeriodElapsedCallback)
     HAL_TIM_TriggerCallback                  0x08003809   Thumb Code     8  stm32f4xx_hal_tim.o(.text.HAL_TIM_TriggerCallback)
     HAL_UARTEx_ReceiveToIdle_IT              0x08003811   Thumb Code   194  stm32f4xx_hal_uart.o(.text.HAL_UARTEx_ReceiveToIdle_IT)
-    HAL_UARTEx_RxEventCallback               0x080038d5   Thumb Code   198  uart.o(.text.HAL_UARTEx_RxEventCallback)
+    HAL_UARTEx_RxEventCallback               0x080038d5   Thumb Code   198  uart_transmit.o(.text.HAL_UARTEx_RxEventCallback)
     HAL_UART_ErrorCallback                   0x0800399d   Thumb Code     8  stm32f4xx_hal_uart.o(.text.HAL_UART_ErrorCallback)
     HAL_UART_IRQHandler                      0x080039a5   Thumb Code  1116  stm32f4xx_hal_uart.o(.text.HAL_UART_IRQHandler)
     HAL_UART_Init                            0x08003e01   Thumb Code   158  stm32f4xx_hal_uart.o(.text.HAL_UART_Init)
@@ -4503,7 +4503,7 @@ Image Symbol Table
     TIM_OC2_SetConfig                        0x08004ba1   Thumb Code   244  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
     TIM_PeriodElapsedCallback                0x08004e2d   Thumb Code   270  pwm.o(.text.TIM_PeriodElapsedCallback)
     Transmit_Task                            0x08004fe1   Thumb Code    32  myostask.o(.text.Transmit_Task)
-    UART_Start_Receive                       0x0800537d   Thumb Code    26  uart.o(.text.UART_Start_Receive)
+    UART_Start_Receive                       0x0800537d   Thumb Code    26  uart_transmit.o(.text.UART_Start_Receive)
     UART_Start_Receive_IT                    0x08005399   Thumb Code    98  stm32f4xx_hal_uart.o(.text.UART_Start_Receive_IT)
     USART1_IRQHandler                        0x0800556d   Thumb Code    16  stm32f4xx_it.o(.text.USART1_IRQHandler)
     UsageFault_Handler                       0x0800557d   Thumb Code     4  stm32f4xx_it.o(.text.UsageFault_Handler)
@@ -4511,7 +4511,7 @@ Image Symbol Table
     beep_init                                0x080056a5   Thumb Code     8  beep.o(.text.beep_init)
     beep_off                                 0x080056ad   Thumb Code    20  beep.o(.text.beep_off)
     beep_on                                  0x080056c1   Thumb Code    20  beep.o(.text.beep_on)
-    can_transmit                             0x080056d5   Thumb Code    54  can1.o(.text.can_transmit)
+    can_transmit                             0x080056d5   Thumb Code    54  can_transmit.o(.text.can_transmit)
     led_off                                  0x0800570d   Thumb Code    28  led.o(.text.led_off)
     led_on                                   0x08005729   Thumb Code    28  led.o(.text.led_on)
     main                                     0x08005745   Thumb Code    60  main.o(.text.main)
@@ -4544,7 +4544,7 @@ Image Symbol Table
     vTaskStartScheduler                      0x08007169   Thumb Code   224  tasks.o(.text.vTaskStartScheduler)
     vTaskSuspendAll                          0x08007249   Thumb Code    16  tasks.o(.text.vTaskSuspendAll)
     vTaskSwitchContext                       0x08007259   Thumb Code   198  tasks.o(.text.vTaskSwitchContext)
-    vofa_transmit                            0x08007321   Thumb Code    28  uart.o(.text.vofa_transmit)
+    vofa_transmit                            0x08007321   Thumb Code    28  uart_transmit.o(.text.vofa_transmit)
     xPortStartScheduler                      0x0800733d   Thumb Code   342  port.o(.text.xPortStartScheduler)
     xPortSysTickHandler                      0x08007495   Thumb Code    60  port.o(.text.xPortSysTickHandler)
     xQueueGenericCreateStatic                0x080074d1   Thumb Code   270  queue.o(.text.xQueueGenericCreateStatic)
@@ -4584,13 +4584,13 @@ Image Symbol Table
     __temporary_stack_top$libspace           0x20000078   Data           0  libspace.o(.bss)
     BUZZERTASKControlBlock                   0x20000278   Data          92  freertos.o(.bss.BUZZERTASKControlBlock)
     BUZZERTASKHandle                         0x200002d4   Data           4  freertos.o(.bss.BUZZERTASKHandle)
-    Float_Data                               0x200002d8   Data           8  can1.o(.bss.Float_Data)
+    Float_Data                               0x200002d8   Data           8  can_transmit.o(.bss.Float_Data)
     IDLE_TASKHandle                          0x200002e0   Data           4  freertos.o(.bss.IDLE_TASKHandle)
     LEDTASKHandle                            0x200002e8   Data           4  freertos.o(.bss.LEDTASKHandle)
-    RxData                                   0x200002ec   Data           8  can1.o(.bss.RxData)
-    RxHeader                                 0x200002f4   Data          28  can1.o(.bss.RxHeader)
+    RxData                                   0x200002ec   Data           8  can_transmit.o(.bss.RxData)
+    RxHeader                                 0x200002f4   Data          28  can_transmit.o(.bss.RxHeader)
     buzzer_count                             0x20000319   Data           1  myostask.o(.bss.buzzer_count)
-    buzzer_times                             0x2000031a   Data           1  can1.o(.bss.buzzer_times)
+    buzzer_times                             0x2000031a   Data           1  can_transmit.o(.bss.buzzer_times)
     hcan1                                    0x2000031c   Data          40  can.o(.bss.hcan1)
     hdma_usart1_rx                           0x20000344   Data          96  usart.o(.bss.hdma_usart1_rx)
     hdma_usart1_tx                           0x200003a4   Data          96  usart.o(.bss.hdma_usart1_tx)
@@ -4601,7 +4601,7 @@ Image Symbol Table
     last_mode                                0x200004dd   Data           1  myostask.o(.bss.last_mode)
     ledTaskStackHighWaterWork                0x200004e0   Data           4  myostask.o(.bss.ledTaskStackHighWaterWork)
     pxCurrentTCB                             0x200005d8   Data           4  tasks.o(.bss.pxCurrentTCB)
-    rx_buffer                                0x20000a50   Data           5  uart.o(.bss.rx_buffer)
+    rx_buffer                                0x20000a50   Data           5  uart_transmit.o(.bss.rx_buffer)
     state_mode                               0x20000a55   Data           1  myostask.o(.bss.state_mode)
     transmit_taskHandle                      0x20000a58   Data           4  freertos.o(.bss.transmit_taskHandle)
     uwTick                                   0x20004664   Data           4  stm32f4xx_hal.o(.bss.uwTick)
@@ -4716,7 +4716,7 @@ Memory Map of the image
     0x080012ce   0x080012ce   0x00000002   PAD
     0x080012d0   0x080012d0   0x000000b8   Code   RO           69    .text.HAL_CAN_MspInit  can.o
     0x08001388   0x08001388   0x00000008   Code   RO          230    .text.HAL_CAN_RxFifo0FullCallback  stm32f4xx_hal_can.o
-    0x08001390   0x08001390   0x0000009a   Code   RO         1893    .text.HAL_CAN_RxFifo0MsgPendingCallback  can1.o
+    0x08001390   0x08001390   0x0000009a   Code   RO         1908    .text.HAL_CAN_RxFifo0MsgPendingCallback  can_transmit.o
     0x0800142a   0x0800142a   0x00000002   PAD
     0x0800142c   0x0800142c   0x00000008   Code   RO          234    .text.HAL_CAN_RxFifo1FullCallback  stm32f4xx_hal_can.o
     0x08001434   0x08001434   0x00000008   Code   RO          236    .text.HAL_CAN_RxFifo1MsgPendingCallback  stm32f4xx_hal_can.o
@@ -4798,7 +4798,7 @@ Memory Map of the image
     0x08003808   0x08003808   0x00000008   Code   RO          839    .text.HAL_TIM_TriggerCallback  stm32f4xx_hal_tim.o
     0x08003810   0x08003810   0x000000c2   Code   RO         1083    .text.HAL_UARTEx_ReceiveToIdle_IT  stm32f4xx_hal_uart.o
     0x080038d2   0x080038d2   0x00000002   PAD
-    0x080038d4   0x080038d4   0x000000c6   Code   RO         1927    .text.HAL_UARTEx_RxEventCallback  uart.o
+    0x080038d4   0x080038d4   0x000000c6   Code   RO         1927    .text.HAL_UARTEx_RxEventCallback  uart_transmit.o
     0x0800399a   0x0800399a   0x00000002   PAD
     0x0800399c   0x0800399c   0x00000008   Code   RO         1121    .text.HAL_UART_ErrorCallback  stm32f4xx_hal_uart.o
     0x080039a4   0x080039a4   0x0000045c   Code   RO         1115    .text.HAL_UART_IRQHandler  stm32f4xx_hal_uart.o
@@ -4852,7 +4852,7 @@ Memory Map of the image
     0x08004c94   0x08004c94   0x000000f2   Code   RO          847    .text.TIM_OC3_SetConfig  stm32f4xx_hal_tim.o
     0x08004d86   0x08004d86   0x00000002   PAD
     0x08004d88   0x08004d88   0x000000a4   Code   RO          849    .text.TIM_OC4_SetConfig  stm32f4xx_hal_tim.o
-    0x08004e2c   0x08004e2c   0x0000010e   Code   RO         1910    .text.TIM_PeriodElapsedCallback  pwm.o
+    0x08004e2c   0x08004e2c   0x0000010e   Code   RO         1893    .text.TIM_PeriodElapsedCallback  pwm.o
     0x08004f3a   0x08004f3a   0x00000002   PAD
     0x08004f3c   0x08004f3c   0x00000050   Code   RO          889    .text.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
     0x08004f8c   0x08004f8c   0x00000052   Code   RO          893    .text.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
@@ -4865,7 +4865,7 @@ Memory Map of the image
     0x080050d8   0x080050d8   0x00000168   Code   RO         1117    .text.UART_Receive_IT  stm32f4xx_hal_uart.o
     0x08005240   0x08005240   0x0000013a   Code   RO         1035    .text.UART_SetConfig  stm32f4xx_hal_uart.o
     0x0800537a   0x0800537a   0x00000002   PAD
-    0x0800537c   0x0800537c   0x0000001a   Code   RO         1925    .text.UART_Start_Receive  uart.o
+    0x0800537c   0x0800537c   0x0000001a   Code   RO         1925    .text.UART_Start_Receive  uart_transmit.o
     0x08005396   0x08005396   0x00000002   PAD
     0x08005398   0x08005398   0x00000062   Code   RO         1057    .text.UART_Start_Receive_IT  stm32f4xx_hal_uart.o
     0x080053fa   0x080053fa   0x00000002   PAD
@@ -4885,7 +4885,7 @@ Memory Map of the image
     0x080056a4   0x080056a4   0x00000008   Code   RO         1873    .text.beep_init     beep.o
     0x080056ac   0x080056ac   0x00000014   Code   RO         1871    .text.beep_off      beep.o
     0x080056c0   0x080056c0   0x00000014   Code   RO         1869    .text.beep_on       beep.o
-    0x080056d4   0x080056d4   0x00000036   Code   RO         1895    .text.can_transmit  can1.o
+    0x080056d4   0x080056d4   0x00000036   Code   RO         1910    .text.can_transmit  can_transmit.o
     0x0800570a   0x0800570a   0x00000002   PAD
     0x0800570c   0x0800570c   0x0000001c   Code   RO         1884    .text.led_off       led.o
     0x08005728   0x08005728   0x0000001c   Code   RO         1882    .text.led_on        led.o
@@ -4941,7 +4941,7 @@ Memory Map of the image
     0x0800679c   0x0800679c   0x000000ae   Code   RO         1265    .text.prvUnlockQueue  queue.o
     0x0800684a   0x0800684a   0x00000002   PAD
     0x0800684c   0x0800684c   0x000001ec   Code   RO         1779    .text.pvPortMalloc  heap_4.o
-    0x08006a38   0x08006a38   0x00000026   Code   RO         1912    .text.pwm           pwm.o
+    0x08006a38   0x08006a38   0x00000026   Code   RO         1895    .text.pwm           pwm.o
     0x08006a5e   0x08006a5e   0x00000002   PAD
     0x08006a60   0x08006a60   0x0000005e   Code   RO         1810    .text.pxPortInitialiseStack  port.o
     0x08006abe   0x08006abe   0x00000002   PAD
@@ -4982,7 +4982,7 @@ Memory Map of the image
     0x08007248   0x08007248   0x00000010   Code   RO         1392    .text.vTaskSuspendAll  tasks.o
     0x08007258   0x08007258   0x000000c6   Code   RO         1410    .text.vTaskSwitchContext  tasks.o
     0x0800731e   0x0800731e   0x00000002   PAD
-    0x08007320   0x08007320   0x0000001c   Code   RO         1929    .text.vofa_transmit  uart.o
+    0x08007320   0x08007320   0x0000001c   Code   RO         1929    .text.vofa_transmit  uart_transmit.o
     0x0800733c   0x0800733c   0x00000156   Code   RO         1816    .text.xPortStartScheduler  port.o
     0x08007492   0x08007492   0x00000002   PAD
     0x08007494   0x08007494   0x0000003c   Code   RO         1832    .text.xPortSysTickHandler  port.o
@@ -5031,7 +5031,7 @@ Memory Map of the image
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x08008628   0x00000004   Data   RW         1166    .data.SystemCoreClock  system_stm32f4xx.o
-    0x20000004   0x0800862c   0x00000004   Data   RW         1914    .data.pwm_cycle     pwm.o
+    0x20000004   0x0800862c   0x00000004   Data   RW         1897    .data.pwm_cycle     pwm.o
     0x20000008   0x08008630   0x00000001   Data   RW          661    .data.uwTickFreq    stm32f4xx_hal.o
     0x20000009   0x08008631   0x00000003   PAD
     0x2000000c   0x08008634   0x00000004   Data   RW          660    .data.uwTickPrio    stm32f4xx_hal.o
@@ -5041,17 +5041,17 @@ Memory Map of the image
     0x20000078        -       0x00000200   Zero   RW           50    .bss.BUZZERTASKBuffer  freertos.o
     0x20000278        -       0x0000005c   Zero   RW           49    .bss.BUZZERTASKControlBlock  freertos.o
     0x200002d4        -       0x00000004   Zero   RW           56    .bss.BUZZERTASKHandle  freertos.o
-    0x200002d8        -       0x00000008   Zero   RW         1897    .bss.Float_Data     can1.o
+    0x200002d8        -       0x00000008   Zero   RW         1912    .bss.Float_Data     can_transmit.o
     0x200002e0        -       0x00000004   Zero   RW           58    .bss.IDLE_TASKHandle  freertos.o
     0x200002e4        -       0x00000004   Zero   RW         1766    .bss.KernelState    cmsis_os2.o
     0x200002e8        -       0x00000004   Zero   RW           55    .bss.LEDTASKHandle  freertos.o
-    0x200002ec        -       0x00000008   Zero   RW         1901    .bss.RxData         can1.o
-    0x200002f4        -       0x0000001c   Zero   RW         1900    .bss.RxHeader       can1.o
-    0x20000310        -       0x00000004   Zero   RW         1917    .bss.TIM_PeriodElapsedCallback.rate  pwm.o
-    0x20000314        -       0x00000004   Zero   RW         1915    .bss.TIM_PeriodElapsedCallback.time_count  pwm.o
-    0x20000318        -       0x00000001   Zero   RW         1916    .bss.TIM_PeriodElapsedCallback.trend  pwm.o
+    0x200002ec        -       0x00000008   Zero   RW         1916    .bss.RxData         can_transmit.o
+    0x200002f4        -       0x0000001c   Zero   RW         1915    .bss.RxHeader       can_transmit.o
+    0x20000310        -       0x00000004   Zero   RW         1900    .bss.TIM_PeriodElapsedCallback.rate  pwm.o
+    0x20000314        -       0x00000004   Zero   RW         1898    .bss.TIM_PeriodElapsedCallback.time_count  pwm.o
+    0x20000318        -       0x00000001   Zero   RW         1899    .bss.TIM_PeriodElapsedCallback.trend  pwm.o
     0x20000319        -       0x00000001   Zero   RW         1859    .bss.buzzer_count   myostask.o
-    0x2000031a        -       0x00000001   Zero   RW         1898    .bss.buzzer_times   can1.o
+    0x2000031a        -       0x00000001   Zero   RW         1913    .bss.buzzer_times   can_transmit.o
     0x2000031b   0x0800863c   0x00000001   PAD
     0x2000031c        -       0x00000028   Zero   RW           73    .bss.hcan1          can.o
     0x20000344        -       0x00000060   Zero   RW          112    .bss.hdma_usart1_rx  usart.o
@@ -5073,7 +5073,7 @@ Memory Map of the image
     0x200005e8        -       0x00000004   Zero   RW         1509    .bss.pxOverflowDelayedTaskList  tasks.o
     0x200005ec        -       0x00000004   Zero   RW         1587    .bss.pxOverflowTimerList  timers.o
     0x200005f0        -       0x00000460   Zero   RW         1511    .bss.pxReadyTasksLists  tasks.o
-    0x20000a50        -       0x00000005   Zero   RW         1931    .bss.rx_buffer      uart.o
+    0x20000a50        -       0x00000005   Zero   RW         1931    .bss.rx_buffer      uart_transmit.o
     0x20000a55        -       0x00000001   Zero   RW         1857    .bss.state_mode     myostask.o
     0x20000a56   0x0800863c   0x00000002   PAD
     0x20000a58        -       0x00000004   Zero   RW           57    .bss.transmit_taskHandle  freertos.o
@@ -5132,43 +5132,43 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        48          0          0          0          0       1252   beep.o
-       374          0          0          0         40       6274   can.o
-       208          0          0          0         45       3353   can1.o
-       694          0          0          0       1724      34881   cmsis_os2.o
-        82          0          0          0          0       3238   dma.o
-       170          0        236          0        624       4256   freertos.o
-       220          0          0          0          0       3908   gpio.o
-      1084          0          0          0      15392       4414   heap_4.o
-        56          0          0          0          0       1235   led.o
-       296          0          0          0          0       2214   list.o
-       294          0          0          0          0       5715   main.o
-       542          0          4          0          8       2046   myostask.o
-      1128         16          0          4          5       3826   port.o
-       308          0          0          4          9       3996   pwm.o
-      2604          0          0          0         64      17228   queue.o
-        64         26        392          0       3072        848   startup_stm32f405xx.o
-        92          0          0          5          4       7058   stm32f4xx_hal.o
-      3090          0          0          0          0      11488   stm32f4xx_hal_can.o
-       384          0          0          0          0       9638   stm32f4xx_hal_cortex.o
-      1794          8          8          0          0       8467   stm32f4xx_hal_dma.o
-      1062          0          0          0          0       5095   stm32f4xx_hal_gpio.o
-        88          0          0          0          0       3304   stm32f4xx_hal_msp.o
-      2730          0          0          0          0       7592   stm32f4xx_hal_rcc.o
-      4262         14          0          0          0      35832   stm32f4xx_hal_tim.o
-       306          0          0          0          0      15258   stm32f4xx_hal_tim_ex.o
-       218          0          0          0         72       6992   stm32f4xx_hal_timebase_tim.o
-      3148          0          0          0          0      20313   stm32f4xx_hal_uart.o
-       146          0          0          0          0       1699   stm32f4xx_it.o
-        18          0         24          4          0       2506   system_stm32f4xx.o
-      4188          0          5          0       1280      24039   tasks.o
-       428          0          0          0         72       7842   tim.o
-      1692         10         13          0        300      11533   timers.o
-       252          0          0          0          5       4046   uart.o
-       448          0          0          0        264       6873   usart.o
+        48          0          0          0          0       1248   beep.o
+       374          0          0          0         40       6270   can.o
+       208          0          0          0         45       3365   can_transmit.o
+       694          0          0          0       1724      34877   cmsis_os2.o
+        82          0          0          0          0       3234   dma.o
+       170          0        236          0        624       4252   freertos.o
+       220          0          0          0          0       3904   gpio.o
+      1084          0          0          0      15392       4410   heap_4.o
+        56          0          0          0          0       1231   led.o
+       296          0          0          0          0       2210   list.o
+       294          0          0          0          0       5711   main.o
+       542          0          4          0          8       2042   myostask.o
+      1128         16          0          4          5       3822   port.o
+       308          0          0          4          9       3992   pwm.o
+      2604          0          0          0         64      17224   queue.o
+        64         26        392          0       3072        844   startup_stm32f405xx.o
+        92          0          0          5          4       7054   stm32f4xx_hal.o
+      3090          0          0          0          0      11484   stm32f4xx_hal_can.o
+       384          0          0          0          0       9634   stm32f4xx_hal_cortex.o
+      1794          8          8          0          0       8463   stm32f4xx_hal_dma.o
+      1062          0          0          0          0       5091   stm32f4xx_hal_gpio.o
+        88          0          0          0          0       3300   stm32f4xx_hal_msp.o
+      2730          0          0          0          0       7588   stm32f4xx_hal_rcc.o
+      4262         14          0          0          0      35828   stm32f4xx_hal_tim.o
+       306          0          0          0          0      15254   stm32f4xx_hal_tim_ex.o
+       218          0          0          0         72       6988   stm32f4xx_hal_timebase_tim.o
+      3148          0          0          0          0      20309   stm32f4xx_hal_uart.o
+       146          0          0          0          0       1695   stm32f4xx_it.o
+        18          0         24          4          0       2502   system_stm32f4xx.o
+      4188          0          5          0       1280      24035   tasks.o
+       428          0          0          0         72       7838   tim.o
+      1692         10         13          0        300      11529   timers.o
+       252          0          0          0          5       4060   uart_transmit.o
+       448          0          0          0        264       6869   usart.o
 
     ----------------------------------------------------------------------
-     32740         86        718         20      22996     288259   Object Totals
+     32740         86        718         20      22996     288157   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        222         12          4          3         16          0   (incl. Padding)
 
@@ -5224,8 +5224,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     33622        102        718         20      23092     288299   Grand Totals
-     33622        102        718         20      23092     288299   ELF Image Totals
+     33622        102        718         20      23092     288197   Grand Totals
+     33622        102        718         20      23092     288197   ELF Image Totals
      33622        102        718         20          0          0   ROM Totals
 
 ==============================================================================
