@@ -43,7 +43,4 @@ cube_exercise/myostask.o: ..\user\Src\myostask.c ..\user\Inc\myostask.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h ..\hardware\Inc\can_transmit.h \
-  ..\hardware\Inc\uart_transmit.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\hardware\Inc\beep.h \
-  ..\hardware\Inc\led.h ..\hardware\Inc\PWM.h
+  ..\hardware\Inc\uart_transmit.h ..\algorithm\Inc\pid.h

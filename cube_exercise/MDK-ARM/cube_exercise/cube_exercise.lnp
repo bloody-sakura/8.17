@@ -39,11 +39,11 @@
 "cube_exercise\heap_4.o"
 "cube_exercise\port.o"
 "cube_exercise\myostask.o"
-"cube_exercise\beep.o"
-"cube_exercise\led.o"
-"cube_exercise\pwm.o"
 "cube_exercise\can_transmit.o"
 "cube_exercise\uart_transmit.o"
+"cube_exercise\tim_exit.o"
+"cube_exercise\control.o"
+"cube_exercise\pid.o"
 --strict --scatter "cube_exercise\cube_exercise.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

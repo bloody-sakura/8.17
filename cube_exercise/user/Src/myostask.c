@@ -1,119 +1,63 @@
 #include "myostask.h"
-volatile uint32_t ledTaskStackHighWaterWork = 0;
-volatile STATE_MODE state_mode = IDLE;
-volatile STATE_MODE last_mode = IDLE;
-uint8_t buzzer_count = 0;
-uint8_t is_beep_on = 0;
-void LED_Task(void *argument) // pwm
-{
 
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xFrequency = pdMS_TO_TICKS(250); // 250ms一循环
-    for (;;)
-    {
-        if (state_mode == Pwm)
-        {
-            led_off(LED1_Pin | LED2_Pin);
-            beep_off();
-            led_on(LED1_Pin);
+motor DJI={
+    .GearRatio=36,
+    .MaxCurrent=3,
+    .MaxSpeed=416,
+};
 
-            if (last_mode != Pwm)
-                pwm();
+volatile PID_Typedef v_pid={
+    .integral=0,
+    .kd=0,
+    .ki=0.01,
+    .kp=2,
+    .pre_error=0,
+    .pre_feedback=0,
+    .integral_limit=1000.0,
+    .output_limit=30000.0,
+};//对应速度环
 
-            last_mode = Pwm;
-        }
+volatile PID_Typedef d_pid={
+    .integral=0,
+    .kd=0,
+    .ki=0.01,
+    .kp=1,
+    .pre_error=0,
+    .pre_feedback=0,
+    .integral_limit=1000.0,
+    .output_limit=300.0,
+};//对应角度环
 
-        ledTaskStackHighWaterWork = uxTaskGetStackHighWaterMark(NULL) * sizeof(StackType_t);
-        vTaskDelayUntil(&xLastWakeTime, xFrequency);
-    }
-}
-
-void Beep_Task(void *argument)
-{
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xFrequency = pdMS_TO_TICKS(250);
-    for (;;)
-    {
-
-        if (state_mode == Beep)
-        {
-            beep_off();
-            led_off(LED1_Pin | LED2_Pin);
-            led_on(LED2_Pin);
-            if (last_mode != Beep)
-            {
-                buzzer_count = 0;
-                is_beep_on = 0;
-            }
-            if (buzzer_count < buzzer_times)
-            {
-                if (is_beep_on == 0)
-                {
-                    beep_on();
-                    is_beep_on = 1;
-                }
-                else
-                {
-                    beep_off();
-                    is_beep_on = 0;
-                    buzzer_count++;
-                }
-            }
-
-            last_mode = Beep;
-        }
-        vTaskDelayUntil(&xLastWakeTime, xFrequency);
-    }
-}
-
+rotor set_rotor={
+    .Angle=0,
+    .Speed=500,
+    .Torque=0,
+};
+volatile rotor real_rotor={
+    .Angle=0,
+    .Speed=0,
+    .Torque=0,
+};
+STATE_MODE state_mode=SPEED;
 void Transmit_Task(void *argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xFrequency = pdMS_TO_TICKS(2); // 2ms一循环
-    for (;;)
+    const TickType_t xFrequency = pdMS_TO_TICKS(2); // 2ms一循环s
+    for(;;)
     {
-        
-        can_transmit();
-
-        vTaskDelayUntil(&xLastWakeTime, xFrequency);
-    }
-}
-
-void Idle_Task(void *argument)
-{
-    static const uint16_t led_queue[] = {LED1_Pin, LED2_Pin};
-    uint8_t i = 0;
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xFrequency = pdMS_TO_TICKS(500); // 10ms一循环
-    for (;;)
-    {
-        if (state_mode == IDLE)
+        get_real_rotor(&real_rotor,&DJI);
+        if(state_mode==DEGREE)
         {
-            led_off(LED1_Pin | LED2_Pin);
-            beep_off();
-            led_on(led_queue[i]);
-            i = (i + 1) % 2;
-            if (last_mode == Pwm)
-            {
-                HAL_TIM_Base_Stop_IT(&htim3);
-                HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
-                HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_2);
-            }
-            last_mode = IDLE;
+            set_rotor.Speed=PID_Process(&d_pid,set_rotor.Angle,real_rotor.Angle);
         }
 
-        vTaskDelayUntil(&xLastWakeTime, xFrequency);
-    }
-}
-void Vofa_Transmit(void *argument)
-{
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xFrequency = pdMS_TO_TICKS(10); // 10ms一循环
-    for (;;)
-    {
-    vofa_transmit();
-            
 
+        uint16_t temp=PID_Process(&v_pid,set_rotor.Speed,real_rotor.Speed);
+
+
+
+        can_transmit(temp);
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }
+

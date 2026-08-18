@@ -1,4 +1,4 @@
-#include "PWM.h"
+#include "tim_exit.h"
 
 volatile uint32_t pwm_cycle=1000;
 

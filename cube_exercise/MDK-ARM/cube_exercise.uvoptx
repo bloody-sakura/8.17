@@ -153,12 +153,32 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>state_mode</ItemText>
+          <ItemText>buzzer_times</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>buzzer_times</ItemText>
+          <ItemText>Speed</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rotor real_rotor</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>real_rotor</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>set_rotor</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>state_mode</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -754,8 +774,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\hardware\Src\beep.c</PathWithFileName>
-      <FilenameWithoutPath>beep.c</FilenameWithoutPath>
+      <PathWithFileName>..\hardware\Src\can_transmit.c</PathWithFileName>
+      <FilenameWithoutPath>can_transmit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -766,8 +786,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\hardware\Src\led.c</PathWithFileName>
-      <FilenameWithoutPath>led.c</FilenameWithoutPath>
+      <PathWithFileName>..\hardware\Src\uart_transmit.c</PathWithFileName>
+      <FilenameWithoutPath>uart_transmit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -778,32 +798,40 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\hardware\Src\PWM.c</PathWithFileName>
-      <FilenameWithoutPath>PWM.c</FilenameWithoutPath>
+      <PathWithFileName>..\hardware\Src\tim_exit.c</PathWithFileName>
+      <FilenameWithoutPath>tim_exit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+  </Group>
+
+  <Group>
+    <GroupName>algorithm</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>7</GroupNumber>
+      <GroupNumber>8</GroupNumber>
       <FileNumber>44</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\hardware\Src\can_transmit.c</PathWithFileName>
-      <FilenameWithoutPath>can_transmit.c</FilenameWithoutPath>
+      <PathWithFileName>..\algorithm\Src\control.c</PathWithFileName>
+      <FilenameWithoutPath>control.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>7</GroupNumber>
+      <GroupNumber>8</GroupNumber>
       <FileNumber>45</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\hardware\Src\uart_transmit.c</PathWithFileName>
-      <FilenameWithoutPath>uart_transmit.c</FilenameWithoutPath>
+      <PathWithFileName>..\algorithm\Src\pid.c</PathWithFileName>
+      <FilenameWithoutPath>pid.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -6,10 +6,9 @@
 #include "can.h"
 extern uint8_t RxData[];
 extern CAN_RxHeaderTypeDef RxHeader;
-extern volatile uint8_t Float_Data[8];
-extern volatile uint8_t buzzer_times;
-extern volatile uint8_t Vofa_Transmit_Signal;
+extern volatile uint8_t ESC_Data[8];
+
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan);
-void can_transmit();
+void can_transmit(uint16_t p);
 
 #endif

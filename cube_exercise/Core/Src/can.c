@@ -62,10 +62,10 @@ CAN_FilterConfig.FilterBank=0;
 CAN_FilterConfig.FilterScale=CAN_FILTERSCALE_16BIT;
 CAN_FilterConfig.FilterMode =CAN_FILTERMODE_IDLIST;
 CAN_FilterConfig.FilterFIFOAssignment=CAN_FILTER_FIFO0;
-CAN_FilterConfig.FilterIdHigh=(0x021<<5);
-CAN_FilterConfig.FilterMaskIdHigh=(0x011<<5);
-CAN_FilterConfig.FilterIdLow=(0x022<<5);
-CAN_FilterConfig.FilterMaskIdLow=(0x023<<5);
+CAN_FilterConfig.FilterIdHigh=(0x202<<5);
+CAN_FilterConfig.FilterMaskIdHigh=(0x202<<5);
+CAN_FilterConfig.FilterIdLow=(0x202<<5);
+CAN_FilterConfig.FilterMaskIdLow=(0x202<<5);
 if(HAL_CAN_ConfigFilter(&hcan1,&CAN_FilterConfig)!=HAL_OK){
   Error_Handler();
 }

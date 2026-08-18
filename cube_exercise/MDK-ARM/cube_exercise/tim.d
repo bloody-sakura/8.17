@@ -42,7 +42,4 @@ cube_exercise/tim.o: ..\Core\Src\tim.c ..\Core\Inc\tim.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\usart.h \
-  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\user\Inc\myostask.h \
-  ..\hardware\Inc\beep.h ..\hardware\Inc\led.h ..\hardware\Inc\PWM.h
+  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h

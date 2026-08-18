@@ -45,5 +45,4 @@ cube_exercise/pwm.o: ..\hardware\Src\PWM.c ..\hardware\Inc\PWM.h \
   ..\Core\Inc\usart.h ..\hardware\Inc\can_transmit.h \
   ..\hardware\Inc\uart_transmit.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\user\Inc\myostask.h \
-  ..\hardware\Inc\beep.h ..\hardware\Inc\led.h
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\user\Inc\myostask.h
