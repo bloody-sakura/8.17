@@ -40,8 +40,10 @@ void Transmit_Task(void *argument)
         if(DJI.cur_motor_mode!=DJI.motor_mode)
         {
             motor_pid_init(&DJI.vel_pid, 2, 0.01, 0);
-            motor_pid_init(&DJI.pos_pid, 1, 0.01, 0);
+            motor_pid_init(&DJI.pos_pid, 0.017, 0, 0);
             motor_set_init(&DJI, SPEED, 960, 500, 0);
+            DJI.vel_pid.integral=0;
+            DJI.pos_pid.integral=0;
             DJI.cur_motor_mode=DJI.motor_mode;
         }
         Get_MotorVal_Feedback(&motor_feedback, &DJI.motor_param);
