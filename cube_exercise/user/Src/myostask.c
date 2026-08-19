@@ -17,7 +17,8 @@ Motor DJI = {
     .pos_pid.pre_feedback=0,
     .pos_pid.integral=0,
 
-    
+    .motor_mode=IDLE,
+    .cur_motor_mode=IDLE,
 
 };
 
@@ -28,19 +29,20 @@ volatile MotorVal motor_feedback = {
     .Speed = 0,
     .Torque = 0,
 };
-int isSetChange = 1;
+
+
 void Transmit_Task(void *argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = pdMS_TO_TICKS(2); // 2ms一循环s
     for (;;)
     {
-        if (isSetChange == 1)
+        if(DJI.cur_motor_mode!=DJI.motor_mode)
         {
             motor_pid_init(&DJI.vel_pid, 2, 0.01, 0);
             motor_pid_init(&DJI.pos_pid, 1, 0.01, 0);
             motor_set_init(&DJI, SPEED, 960, 500, 0);
-            isSetChange = 0;
+            DJI.cur_motor_mode=DJI.motor_mode;
         }
         Get_MotorVal_Feedback(&motor_feedback, &DJI.motor_param);
         if (DJI.motor_mode== DEGREE)

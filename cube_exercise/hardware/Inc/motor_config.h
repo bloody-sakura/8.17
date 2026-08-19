@@ -44,6 +44,7 @@ typedef struct
     MotorMode motor_mode;
     PID_Typedef vel_pid;
     PID_Typedef pos_pid;
+    MotorMode cur_motor_mode;
 }Motor;
 
 
