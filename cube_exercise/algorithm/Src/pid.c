@@ -1,18 +1,7 @@
 #include "pid.h"
 
 
-void get_real_rotor(volatile rotor* Rotor,motor* Motor)
-{
-    static int16_t count=0;
-    float raw_degree=((ESC_Data[0]<<8)|(ESC_Data[1]))*360.0/8191.0;
-    if(((Rotor->Angle-360*count)-raw_degree)>180)
-    count++;
-    if(((Rotor->Angle-360*count)-raw_degree)<-180)
-    count--;
-    Rotor->Angle=count*360+raw_degree;
-    Rotor->Speed=((int16_t)((ESC_Data[2]<<8)|(ESC_Data[3])));
-    Rotor->Torque=(int16_t)(ESC_Data[4]<<8)|(ESC_Data[5]);
-}
+
 
 
 float PID_Process(volatile PID_Typedef *pid,float target,float feedback)

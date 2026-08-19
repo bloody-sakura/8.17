@@ -1,5 +1,6 @@
-cube_exercise/pid.o: ..\algorithm\Src\pid.c ..\algorithm\Inc\pid.h \
-  ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
+cube_exercise/motor_config.o: ..\hardware\Src\motor_config.c \
+  ..\hardware\Inc\motor_config.h ..\Core\Inc\main.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
@@ -43,4 +44,4 @@ cube_exercise/pid.o: ..\algorithm\Src\pid.c ..\algorithm\Inc\pid.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h ..\hardware\Inc\can_transmit.h \
-  ..\hardware\Inc\uart_transmit.h ..\hardware\Inc\motor_config.h
+  ..\hardware\Inc\uart_transmit.h
