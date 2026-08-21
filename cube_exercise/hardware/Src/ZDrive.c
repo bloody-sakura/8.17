@@ -1,98 +1,69 @@
-/**
- * @file    ZDrive.c
- * @brief   ZDrive J60/Z-Smart motor driver, ported from R2 chassis.
- */
-#include "includes.h"
 #include "ZDrive.h"
-#include "FD_Canqueue.h"
-
 // #if USE_ZMDR
 
 Zdrive Zmotor[USE_ZDRIVE_NUM];
+float N2DEG(float pos_deg)
+{
+    return (pos_deg*360);
+}
 
-bool CanFullFlag = false; // 发送队列满标志,由 Zdrive_Enqueue() 置位
+float DEG2N(float pos_deg)
+{
+    return (pos_deg/360);
+}
 
 // 电机落在哪一路 CAN:SPLIT_COUNT = 0 时全部走第一路,否则前 SPLIT_COUNT 个走第一路
 static inline bool is_Zdrive_OnFirstBus(uint32_t motor_index)
 {
-    return (MOTOR_ZDRIVE_SPLIT_COUNT == 0U) ||
-           (motor_index < MOTOR_ZDRIVE_SPLIT_COUNT);
-}
-
-// 判断 ID(1-based)的电机是否挂在 bus(0=FDCAN1,1=FDCAN2,2=FDCAN3)上
-static inline bool Zdrive_IdOnBus(uint32_t id, uint8_t bus)
-{
-    uint8_t cfg_bus = is_Zdrive_OnFirstBus(id - 1U) ? (uint8_t)MOTOR_ZDRIVE_CAN_BUS_1
-                                                    : (uint8_t)MOTOR_ZDRIVE_CAN_BUS_2;
-    return cfg_bus == bus;
-}
-// 获取电机的发送队列,根据电机 ID(0-based)判断挂在哪一路 CAN 上
-static FDCAN_SendQueueType *Zdrive_GetTxQueue(uint32_t motor_index)
-{
-    uint8_t bus = is_Zdrive_OnFirstBus(motor_index) ? (uint8_t)MOTOR_ZDRIVE_CAN_BUS_1
-                                                    : (uint8_t)MOTOR_ZDRIVE_CAN_BUS_2;
-
-    if (bus == 0U)
-    {
-        return &CAN1_Txqueue;
-    }
-    if (bus == 2U)
-    {
-        return &CAN3_Txqueue;
-    }
-    return &CAN2_Txqueue;
-}
-
-// 拆分是否生效(第二路总线上有电机)
-static inline bool Zdrive_SplitActive(void)
-{
-    return (MOTOR_ZDRIVE_SPLIT_COUNT > 0U) &&
-           (MOTOR_ZDRIVE_SPLIT_COUNT < MOTOR_ZDRIVE_COUNT) &&
-           (MOTOR_ZDRIVE_CAN_BUS_2 != MOTOR_ZDRIVE_CAN_BUS_1);
+    return (MOTOR_ZDRIVE_SPLIT_COUNT == 0U) || (motor_index < MOTOR_ZDRIVE_SPLIT_COUNT);
 }
 
 static const uint8_t s_empty_data[1] = {0};
 
-// 入队:按帧 ID 解析所属总线队列(ID 1..8 各自解析,0xFU 广播两路都发);
-// 满队列置 Can2FullFlag 并丢弃,行为与直接写入一致
-static void Zdrive_Enqueue(uint32_t id, uint8_t dlc, const uint8_t *data)
+bool CanFullFlag = false; // 发送队列满标志,由 Zdrive_Enqueue() 置位
+CAN_Send_Queue send_queue;
+bool isQueueFull(CAN_Send_Queue *send_queue)
 {
-    FDCAN_RxHeaderTypeDef header;
-    FDCAN_SendQueueType *queues[2];
-    uint8_t queue_cnt;
+    if (send_queue->count == 8)
+        return true;
+    return false;
+}
 
-    header.Identifier = id;
-    header.IdType = FDCAN_STANDARD_ID;
-    header.DataLength = dlc;
+bool isQueueEmpty(CAN_Send_Queue *send_queue)
+{
+    if (send_queue->count == 0)
+        return true;
+    return false;
+}
 
-    if ((id & 0xFU) == 0xFU)
-    {
-        queues[0] = Zdrive_GetTxQueue(0);
-        queue_cnt = 1U;
-        if (Zdrive_SplitActive())
-        {
-            queues[1] = Zdrive_GetTxQueue(MOTOR_ZDRIVE_SPLIT_COUNT);
-            queue_cnt = 2U;
-        }
-    }
-    else
-    {
-        queues[0] = Zdrive_GetTxQueue((id & 0xFU) - 1U);
-        queue_cnt = 1U;
-    }
+void QueueInit(CAN_Send_Queue *send_queue)
+{
+    send_queue->head = 0;
+    send_queue->tail = 0;
+    send_queue->count = 0;
+}
 
-    for (uint8_t k = 0U; k < queue_cnt; k++)
+void EnQueue(CAN_Send_Queue *send_queue, uint32_t id, uint8_t length, uint8_t *data)
+{
+    if (isQueueFull(send_queue) == false)
     {
-        if (CAN_Queue_IfFull(queues[k]))
-        {
-            CanFullFlag = true;
-            continue;
-        }
-        CAN_Enqueue(queues[k], header, (uint8_t *)data);
+        send_queue->TxBuffer[send_queue->tail].TxHeader.StdId = id;
+        send_queue->TxBuffer[send_queue->tail].TxHeader.DLC = length;
+        memcpy(send_queue->TxBuffer[send_queue->tail].TxData, data, length);
+        send_queue->tail = (send_queue->tail + 1) % 8;
+        send_queue->count++;
     }
 }
 
-void ZdriveInit(void)//初始化
+void DeQueue(CAN_Send_Queue *send_queue)
+{
+    if (isQueueEmpty(send_queue) == false)
+    {
+        send_queue->head = (send_queue->head + 1) % 8;
+        send_queue->count--;
+    }
+}
+void ZdriveInit(void) // 初始化
 {
     for (uint32_t i = 0; i < USE_ZDRIVE_NUM; i++)
     {
@@ -123,6 +94,7 @@ void ZdriveSet(float data, uint8_t id, uint8_t set_code)
     if (id == 0U)
     {
         id = 0xFU; /* broadcast address */
+        EnQueue(&send_queue, (id | ((uint32_t)set_code << 4U)), 0, (uint8_t *)s_empty_data);
     }
     else
     {
@@ -138,26 +110,27 @@ void ZdriveSet(float data, uint8_t id, uint8_t set_code)
         {
             data /= (60.0f / Zmotor[id - 1U].param.ReductionRatio);
         }
+        EnQueue(&send_queue, id | ((uint32_t)set_code << 4U), 4U, (uint8_t *)&data);
     }
-
-    Zdrive_Enqueue(id | ((uint32_t)set_code << 4U), 4U, (const uint8_t *)&data);
+   
 }
 
-void ZdriveReceive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_Data, uint8_t bus)
+// 数据接收模块，数据存在对应的Zmotor[]里
+void ZdriveReceive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_Data)
 {
-    uint32_t control_id = (uint32_t)(Rxheader.Identifier & 0xFU);
-    uint32_t operation_id = Rxheader.Identifier >> 4U;
+    uint32_t control_id = (uint32_t)(Rxheader.StdId & 0xFU);
+    uint32_t operation_id = Rxheader.StdId >> 4U;
     float tmp_pos = 0.0f;
     int16_t tmp_vel = 0;
     int16_t tmp_cur = 0;
 
     /* ZDrive frames are standard IDs below 0x400.  VESC status frames on the
        same bus use standard IDs >= 0x0900 and must not be parsed here. */
-    if (Rxheader.IdType != FDCAN_STANDARD_ID)
+    if (Rxheader.IDE != CAN_ID_STD)
     {
         return;
     }
-    if ((Rxheader.Identifier >> 8U) >= 9U)
+    if ((Rxheader.StdId >> 8U) >= 9U)
     {
         return;
     }
@@ -167,14 +140,9 @@ void ZdriveReceive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_Data, uint8_t bus
         return;
     }
 
-    // 该 ID 按配置不在这条总线上(如同总线的 DJI 反馈 0x201..0x204)→ 丢弃
-    if (!Zdrive_IdOnBus(control_id, bus))
-    {
-        return;
-    }
     uint32_t motor_index = control_id - 1U;
 
-    if (Rxheader.DataLength == FDCAN_DLC_BYTES_4)
+    if (Rxheader.DLC == 4U)
     {
         switch (operation_id)
         {
@@ -236,7 +204,7 @@ void ZdriveReceive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_Data, uint8_t bus
             break;
         }
     }
-    else if (Rxheader.DataLength == FDCAN_DLC_BYTES_8)
+    else if (Rxheader.DLC == 8U)
     {
         memcpy(&tmp_pos, Rx_Data, sizeof(float));
 
@@ -265,7 +233,8 @@ void ZdriveAsk(uint8_t id, uint8_t ask_code)
         id = 0xFU;
     }
 
-    Zdrive_Enqueue(id | ((uint32_t)ask_code << 4U), 0U, s_empty_data);
+    EnQueue(&send_queue, (id | ((uint32_t)ask_code << 4U)), 0, (uint8_t *)s_empty_data);
+    
 }
 
 void ZdriveSetPVT(float speed, float angle, uint8_t id)
@@ -284,7 +253,7 @@ void ZdriveSetPVT(float speed, float angle, uint8_t id)
     memcpy(data, &vel_mod_u32, sizeof(uint32_t));
     memcpy(data + 4U, &pos_mod_u32, sizeof(uint32_t));
 
-    Zdrive_Enqueue(id | ((uint32_t)PVT_Frame << 4U), 8U, data);
+    EnQueue(&send_queue, (id | ((uint32_t)PVT_Frame << 4U)), 8U, data);
 }
 
 void ZdriveSetPID(float value, uint8_t id, uint8_t pid_code)
@@ -301,7 +270,7 @@ void ZdriveSetPID(float value, uint8_t id, uint8_t pid_code)
 
     memcpy(data, &val_u32, sizeof(uint32_t));
 
-    Zdrive_Enqueue(id | ((uint32_t)pid_code << 4U), 8U, data);
+    EnQueue(&send_queue, (id | ((uint32_t)pid_code << 4U)), 8U, data);
 }
 
 void ZdriveSetPosVelLimit(float vel_limit, uint8_t id)
@@ -315,9 +284,7 @@ void ZdriveSetPosVelLimit(float vel_limit, uint8_t id)
 
     memcpy(data, &vel_limit, sizeof(float));
 
-    Zdrive_Enqueue(id | ((uint32_t)Vel_Limit << 4U), 4U, data);
-
-    ZdriveAsk(id, Vel_Limit);
+    EnQueue(&send_queue, (id | ((uint32_t)Vel_Limit << 4U)), 4U, data);
 }
 
 void ZdriveSetAccel(float ace, uint8_t id)
@@ -331,8 +298,8 @@ void ZdriveSetAccel(float ace, uint8_t id)
 
     memcpy(data, &ace, sizeof(float));
 
-    Zdrive_Enqueue(id | ((uint32_t)Acc_Acu << 4U), 4U, data);
-    Zdrive_Enqueue(id | ((uint32_t)Acc_Dec << 4U), 4U, data);
+    EnQueue(&send_queue, (id | ((uint32_t)Acc_Acu << 4U)), 4U, data);
+    EnQueue(&send_queue, (id | ((uint32_t)Acc_Dec << 4U)), 4U, data);
 
     ZdriveAsk(id, Acc_Acu);
     ZdriveAsk(id, Acc_Dec);
@@ -354,8 +321,7 @@ void ZdriveSetVelLimit(float vel, uint8_t id)
         vel /= (60.0f / Zmotor[id - 1U].param.ReductionRatio);
     }
 
-    Zdrive_Enqueue(id | ((uint32_t)Vel_Limit << 4U), 4U, (const uint8_t *)&vel);
-    ZdriveAsk(id, Vel_Limit);
+    EnQueue(&send_queue, (id | ((uint32_t)Vel_Limit << 4U)), 4U, (uint8_t *)&vel);
 }
 
 void ZdriveParamConfig(uint8_t id, ZdriveParam param)
@@ -397,11 +363,9 @@ void ZdriveParamConfig(uint8_t id, ZdriveParam param)
 // 可以放小巧思
 static void Zdrive_SwitchMachine(Zdrive *motor, uint8_t id)
 {
+    
     switch (motor->mode)
     {
-    case Zdrive_Disable:
-    case Zdrive_Current:
-        break;
     case Zdrive_Speed:
         motor->valSetNow.speed_rpm = 0.f;
         motor->valSetPre.speed_rpm = 0.f;
@@ -410,10 +374,14 @@ static void Zdrive_SwitchMachine(Zdrive *motor, uint8_t id)
         motor->valSetNow.pos_deg = motor->valReal.pos_deg;
         motor->valSetPre.pos_deg = motor->valReal.pos_deg;
         break;
-
+    case Zdrive_Disable:
+    case Zdrive_Current:
     default:
         break;
     }
+
+
+    // 始终下发模式命令并查询
     ZdriveSet((float)motor->mode, id, Mode);
     ZdriveAsk(id, Mode);
 }
@@ -433,19 +401,19 @@ static void Zdrive_RunMachine(Zdrive *motor, uint8_t id)
 
     case Zdrive_Current:
         // ZDrive MIT 帧格式,未适配
-        // ZdriveSet(motor->valSetNow.current_A, id, CurIn);
+        ZdriveSet(motor->valSetNow.current_A, id, CurIn);
         break;
 
     case Zdrive_Postion:
         if (!motor->pvtparam.PVTflag)
         {
-            if (fabs(motor->valSetNow.pos_deg - motor->valSetPre.pos_deg) > 0.01f)
+            if (fabs(motor->valSetNow.pos_deg - motor->valSetPre.pos_deg) >= 0.1)
             {
                 motor->valSetPre.pos_deg = motor->valSetNow.pos_deg;
                 ZdriveSet(motor->valSetNow.pos_deg, id, PosIn);
             }
             else if (motor->valSetNow.pos_deg == 0.0f &&
-                     fabs(motor->valReal.posIn_deg) > 0.5f)
+                     fabs(motor->valReal.posIn_deg) >= 0.1)
             {
                 ZdriveSet(motor->valSetNow.pos_deg, id, PosIn);
             }
@@ -477,7 +445,6 @@ static void Zdrive_ErrHandle(Zdrive *motor)
 void ZdriveFunc(void)
 {
     uint32_t i;
-
     for (i = 0; i < USE_ZDRIVE_NUM; i++)
     {
         // Begin == false:初始化未完成,跳过该电机
@@ -504,5 +471,6 @@ void ZdriveFunc(void)
     ZdriveAsk(0, Pur);
     // ZdriveAsk(0, PosIn);
     ZdriveAsk(0, Vel);
+    
 }
 // #endif /* USE_ZMDR */

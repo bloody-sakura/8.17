@@ -2,7 +2,8 @@
 #define MOTORCONFIG_H
 
 #include "main.h"
-
+#include <stdbool.h>
+#include "ZDrive.h"
 typedef struct
 {
     float Angle;
@@ -52,5 +53,7 @@ typedef struct
 void Get_MotorVal_Feedback(volatile MotorVal* Rotor ,MotorParam* Motor);
 void motor_set_init(Motor* motor,MotorMode motor_mode,float set_motor_angle,float set_motor_speed,float set_motor_torque);
 void motor_pid_init(PID_Typedef *pid,float kp,float ki,float kd);
+
+
 
 #endif

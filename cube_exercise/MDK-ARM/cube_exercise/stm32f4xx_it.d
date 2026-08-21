@@ -43,4 +43,10 @@ cube_exercise/stm32f4xx_it.o: ..\Core\Src\stm32f4xx_it.c \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h ..\hardware\Inc\can_transmit.h \
-  ..\hardware\Inc\uart_transmit.h ..\Core\Inc\stm32f4xx_it.h
+  ..\hardware\Inc\uart_transmit.h ..\hardware\Inc\ZDrive.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  ..\hardware\Inc\motor_config.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\hardware\Inc\tim_exit.h ..\Core\Inc\stm32f4xx_it.h

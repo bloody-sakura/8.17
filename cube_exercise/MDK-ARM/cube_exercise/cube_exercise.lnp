@@ -43,6 +43,7 @@
 "cube_exercise\uart_transmit.o"
 "cube_exercise\tim_exit.o"
 "cube_exercise\motor_config.o"
+"cube_exercise\zdrive.o"
 "cube_exercise\pid.o"
 --strict --scatter "cube_exercise\cube_exercise.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

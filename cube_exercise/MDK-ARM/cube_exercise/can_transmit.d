@@ -43,4 +43,11 @@ cube_exercise/can_transmit.o: ..\hardware\Src\can_transmit.c \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  ..\Core\Inc\dma.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h
+  ..\Core\Inc\dma.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
+  ..\hardware\Inc\ZDrive.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  ..\hardware\Inc\motor_config.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\hardware\Inc\tim_exit.h

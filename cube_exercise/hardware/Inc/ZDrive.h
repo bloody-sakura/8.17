@@ -8,8 +8,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "main.h"
-#include "FD_Canqueue.h"
 #include "motor_config.h"
+#include "math.h"
+#include "string.h"
+///
+#define MOTOR_ZDRIVE_SPLIT_COUNT 0
+#define MOTOR_ZDRIVE_COUNT 3
+///
+
 
 #ifdef __cplusplus
 extern "C"
@@ -165,27 +171,53 @@ extern "C"
         volatile bool Begin; /* 初始化完成标志:false 时 Func 跳过该电机,由任务层置 true */
     } Zdrive;
 
-#if USE_ZMDR
+typedef struct 
+{
+    CAN_TxHeaderTypeDef TxHeader;
+    uint8_t TxData[8];
+}CAN_SendType;
+
+typedef struct 
+{
+    CAN_SendType TxBuffer[8];
+    uint8_t head;
+    uint8_t tail;
+    uint8_t count;
+}CAN_Send_Queue;
+
+extern CAN_Send_Queue send_queue;
+    
+//#if USE_ZMDR
     extern Zdrive Zmotor[USE_ZDRIVE_NUM];
 
     void ZdriveInit(void);
     void ZdriveFunc(void);
-    void ZdriveReceive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data, uint8_t bus);
+    void ZdriveReceive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
     void ZdriveSet(float data, uint8_t id, uint8_t set_code);
     void ZdriveAsk(uint8_t id, uint8_t ask_code);
     void ZdriveSetPVT(float speed, float angle, uint8_t id);
-    void ZdriveSetMIT(uint8_t id);
-    void ZdriveClearErr(uint8_t id);
+    //void ZdriveSetMIT(uint8_t id);
+    //void ZdriveClearErr(uint8_t id);
     void ZdriveSetVelLimit(float vel, uint8_t id);
     void ZdriveSetPID(float value, uint8_t id, uint8_t pid_code);
     void ZdriveSetPosVelLimit(float vel_limit, uint8_t id);
     void ZdriveSetAccel(float ace, uint8_t id);
     /** 覆盖指定电机的 param,位置环/速度环 PID 哪一项改动就下发哪一项寄存器 */
     void ZdriveParamConfig(uint8_t id, ZdriveParam param);
-#endif /* USE_ZMDR */
+//#endif /* USE_ZMDR */
 
+void QueueInit(CAN_Send_Queue* send_queue);
+void DeQueue(CAN_Send_Queue* send_queue);
+bool isQueueFull(CAN_Send_Queue* send_queue);
+bool isQueueEmpty(CAN_Send_Queue* send_queue);
+void EnQueue(CAN_Send_Queue* send_queue,uint32_t id, uint8_t length,uint8_t* data);
+
+#include "can_transmit.h"
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* ZDRIVE_H */
+
+#endif
+
+

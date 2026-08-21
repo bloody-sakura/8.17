@@ -52,6 +52,8 @@ extern "C" {
 #include "tim.h"
 #include "usart.h"
 #include "can_transmit.h"
+#include "ZDrive.h"
+#include "tim_exit.h"
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
