@@ -1571,11 +1571,6 @@
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\motor_config.c</FilePath>
             </File>
-            <File>
-              <FileName>ZDrive.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\hardware\Src\ZDrive.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
