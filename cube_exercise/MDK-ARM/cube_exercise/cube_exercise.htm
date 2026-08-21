@@ -3,7 +3,7 @@
 <title>Static Call Graph - [cube_exercise\cube_exercise.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image cube_exercise\cube_exercise.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Wed Aug 19 20:15:15 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Fri Aug 21 22:11:25 2026
 <BR><P>
 <H3>Maximum Stack Usage =        348 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1361,14 +1361,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
 </UL>
 
-<P><STRONG><a name="[5d]"></a>Transmit_Task</STRONG> (Thumb, 284 bytes, Stack size 40 bytes, myostask.o(.text.Transmit_Task))
+<P><STRONG><a name="[5d]"></a>Transmit_Task</STRONG> (Thumb, 288 bytes, Stack size 40 bytes, myostask.o(.text.Transmit_Task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = Transmit_Task &rArr; vTaskDelayUntil &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; vListInsertEnd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;can_transmit
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Process
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_MotorVal_Feedback
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_set_init
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_pid_init
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_pid_init
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_set_init
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetTickCount
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
 </UL>
@@ -1417,13 +1417,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[e9]"></a>motor_pid_init</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, motor_config.o(.text.motor_pid_init))
+<P><STRONG><a name="[ea]"></a>motor_pid_init</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, motor_config.o(.text.motor_pid_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = motor_pid_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Transmit_Task
 </UL>
 
-<P><STRONG><a name="[ea]"></a>motor_set_init</STRONG> (Thumb, 60 bytes, Stack size 20 bytes, motor_config.o(.text.motor_set_init))
+<P><STRONG><a name="[e9]"></a>motor_set_init</STRONG> (Thumb, 60 bytes, Stack size 20 bytes, motor_config.o(.text.motor_set_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = motor_set_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Transmit_Task

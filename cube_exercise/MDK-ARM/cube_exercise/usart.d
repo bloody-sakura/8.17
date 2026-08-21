@@ -42,4 +42,5 @@ cube_exercise/usart.o: ..\Core\Src\usart.c ..\Core\Inc\usart.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
-  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h
+  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h \
+  ..\hardware\Inc\motor_config.h

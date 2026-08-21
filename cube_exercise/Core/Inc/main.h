@@ -52,6 +52,7 @@ extern "C" {
 #include "tim.h"
 #include "usart.h"
 #include "can_transmit.h"
+#include "motor_config.h"
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
