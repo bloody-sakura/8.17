@@ -1,5 +1,5 @@
-#ifndef PWM_H
-#define PWM_H
+#ifndef TIM_EXIT_H
+#define TIM_EXIT_H
 
 #include "main.h"
 

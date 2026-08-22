@@ -1,4 +1,4 @@
-#include "motor_config.h"
+#include "DJIDrive.h"
 
 uint8_t ESC_Data[8] = {0};
 
@@ -7,14 +7,14 @@ DJIMotor DJI = {
     .motor_param.MaxCurrent = 3,
     .motor_param.MaxSpeed = 416,
     
-    .vel_pid.integral_limit=1000.0,
+    .vel_pid.integral_limit=10000.0,
     .vel_pid.output_limit=30000.0,
     .vel_pid.pre_error=0,
     .vel_pid.pre_feedback=0,
     .vel_pid.integral=0,
 
-    .pos_pid.integral_limit=1000.0,
-    .pos_pid.output_limit=1000.0,
+    .pos_pid.integral_limit=10000.0,
+    .pos_pid.output_limit=2000.0,
     .pos_pid.pre_error=0,
     .pos_pid.pre_feedback=0,
     .pos_pid.integral=0,

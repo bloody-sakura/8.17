@@ -1567,11 +1567,6 @@
               <FilePath>..\hardware\Src\tim_exit.c</FilePath>
             </File>
             <File>
-              <FileName>motor_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\hardware\Src\motor_config.c</FilePath>
-            </File>
-            <File>
               <FileName>ZDrive.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\ZDrive.c</FilePath>
@@ -1590,6 +1585,11 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>DJIDrive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\DJIDrive.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3169,11 +3169,6 @@
               <FilePath>..\hardware\Src\tim_exit.c</FilePath>
             </File>
             <File>
-              <FileName>motor_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\hardware\Src\motor_config.c</FilePath>
-            </File>
-            <File>
               <FileName>ZDrive.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\ZDrive.c</FilePath>
@@ -3192,6 +3187,11 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>DJIDrive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\DJIDrive.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4771,11 +4771,6 @@
               <FilePath>..\hardware\Src\tim_exit.c</FilePath>
             </File>
             <File>
-              <FileName>motor_config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\hardware\Src\motor_config.c</FilePath>
-            </File>
-            <File>
               <FileName>ZDrive.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\ZDrive.c</FilePath>
@@ -4794,6 +4789,11 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>DJIDrive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\DJIDrive.c</FilePath>
             </File>
           </Files>
         </Group>

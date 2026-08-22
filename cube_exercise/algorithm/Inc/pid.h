@@ -2,7 +2,7 @@
 #define PID_H
 
 #include "main.h"
-#include "motor_config.h"
+#include "DJIDrive.h"
 #include "can_transmit.h"
 
 

@@ -44,7 +44,7 @@ cube_exercise/zdrive.o: ..\hardware\Src\ZDrive.c ..\hardware\Inc\ZDrive.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\hardware\Inc\motor_config.h \
+  ..\Core\Inc\usart.h ..\hardware\Inc\DJIDrive.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\hardware\Inc\can_transmit.h

@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "main.h"
-#include "motor_config.h"
+#include "DJIDrive.h"
 #include "math.h"
 #include "string.h"
 ///

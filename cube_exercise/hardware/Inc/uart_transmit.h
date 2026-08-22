@@ -1,5 +1,5 @@
-#ifndef UART
-#define UART
+#ifndef UART_TRANSMIT_H
+#define UART_TRANSMIT_H
 
 #include "main.h"
 extern uint8_t rx_buffer[];
