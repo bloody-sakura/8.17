@@ -1,7 +1,7 @@
 #include "myostask.h"
 
 
-
+#ifdef ZDRIVE
 void CANTransmit_Task(void *argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -13,6 +13,7 @@ void CANTransmit_Task(void *argument)
     vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }
+
 
 
 void ZdriveProcess_Task(void *argument)
@@ -29,10 +30,11 @@ void ZdriveProcess_Task(void *argument)
     }
 }
 
+#endif
 
 
 
-
+#if DJIDRIVE
 void DJIProcess_Task(void *argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -60,3 +62,5 @@ void DJIProcess_Task(void *argument)
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }
+
+#endif

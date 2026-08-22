@@ -10,6 +10,8 @@ extern uint8_t RxData[];
 extern CAN_RxHeaderTypeDef RxHeader;
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan);
+void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan);
+
 void Zcan_transmit();
 void DJIcan_transmit(uint16_t p);
 #endif
