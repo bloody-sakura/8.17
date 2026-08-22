@@ -52,6 +52,6 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 
 void vofa_transmit()//发送float数据
 {
-    HAL_UART_Transmit(&huart1,Float_Data,sizeof(Float_Data),100);
+    //HAL_UART_Transmit(&huart1,Float_Data,sizeof(Float_Data),100);
 }*/
 

@@ -47,10 +47,10 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-/* Definitions for PROCESSTASK */
-osThreadId_t PROCESSTASKHandle;
-const osThreadAttr_t PROCESSTASK_attributes = {
-  .name = "PROCESSTASK",
+/* Definitions for ProcessTask */
+osThreadId_t ProcessTaskHandle;
+const osThreadAttr_t ProcessTask_attributes = {
+  .name = "ProcessTask",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
@@ -99,8 +99,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of PROCESSTASK */
-  PROCESSTASKHandle = osThreadNew(Process_Task, NULL, &PROCESSTASK_attributes);
+  /* creation of ProcessTask */
+  ProcessTaskHandle = osThreadNew(Process_Task, NULL, &ProcessTask_attributes);
 
   /* creation of transmit_task */
   transmit_taskHandle = osThreadNew(Transmit_Task, NULL, &transmit_task_attributes);
@@ -117,7 +117,7 @@ void MX_FREERTOS_Init(void) {
 
 /* USER CODE BEGIN Header_Process_Task */
 /**
-  * @brief  Function implementing the PROCESSTASK thread.
+  * @brief  Function implementing the ProcessTask thread.
   * @param  argument: Not used
   * @retval None
   */
