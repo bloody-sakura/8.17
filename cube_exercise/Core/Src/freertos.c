@@ -47,17 +47,24 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-/* Definitions for ProcessTask */
-osThreadId_t ProcessTaskHandle;
-const osThreadAttr_t ProcessTask_attributes = {
-  .name = "ProcessTask",
+/* Definitions for ZDriveProcessTa */
+osThreadId_t ZDriveProcessTaHandle;
+const osThreadAttr_t ZDriveProcessTa_attributes = {
+  .name = "ZDriveProcessTa",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for transmit_task */
-osThreadId_t transmit_taskHandle;
-const osThreadAttr_t transmit_task_attributes = {
-  .name = "transmit_task",
+/* Definitions for CANTansmitTask */
+osThreadId_t CANTansmitTaskHandle;
+const osThreadAttr_t CANTansmitTask_attributes = {
+  .name = "CANTansmitTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for DJIProcessTask */
+osThreadId_t DJIProcessTaskHandle;
+const osThreadAttr_t DJIProcessTask_attributes = {
+  .name = "DJIProcessTask",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
@@ -67,8 +74,9 @@ const osThreadAttr_t transmit_task_attributes = {
 
 /* USER CODE END FunctionPrototypes */
 
-void Process_Task(void *argument);
-void Transmit_Task(void *argument);
+void ZdriveProcess_Task(void *argument);
+void CANTransmit_Task(void *argument);
+void DJIProcess_Task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -99,11 +107,14 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of ProcessTask */
-  ProcessTaskHandle = osThreadNew(Process_Task, NULL, &ProcessTask_attributes);
+  /* creation of ZDriveProcessTa */
+  ZDriveProcessTaHandle = osThreadNew(ZdriveProcess_Task, NULL, &ZDriveProcessTa_attributes);
 
-  /* creation of transmit_task */
-  transmit_taskHandle = osThreadNew(Transmit_Task, NULL, &transmit_task_attributes);
+  /* creation of CANTansmitTask */
+  CANTansmitTaskHandle = osThreadNew(CANTransmit_Task, NULL, &CANTansmitTask_attributes);
+
+  /* creation of DJIProcessTask */
+  DJIProcessTaskHandle = osThreadNew(DJIProcess_Task, NULL, &DJIProcessTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -115,40 +126,58 @@ void MX_FREERTOS_Init(void) {
 
 }
 
-/* USER CODE BEGIN Header_Process_Task */
+/* USER CODE BEGIN Header_ZdriveProcess_Task */
 /**
-  * @brief  Function implementing the ProcessTask thread.
+  * @brief  Function implementing the ZDriveProcessTa thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_Process_Task */
-__weak void Process_Task(void *argument)
+/* USER CODE END Header_ZdriveProcess_Task */
+__weak void ZdriveProcess_Task(void *argument)
 {
-  /* USER CODE BEGIN Process_Task */
+  /* USER CODE BEGIN ZdriveProcess_Task */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END Process_Task */
+  /* USER CODE END ZdriveProcess_Task */
 }
 
-/* USER CODE BEGIN Header_Transmit_Task */
+/* USER CODE BEGIN Header_CANTransmit_Task */
 /**
-* @brief Function implementing the transmit_task thread.
+* @brief Function implementing the CANTansmitTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_Transmit_Task */
-__weak void Transmit_Task(void *argument)
+/* USER CODE END Header_CANTransmit_Task */
+__weak void CANTransmit_Task(void *argument)
 {
-  /* USER CODE BEGIN Transmit_Task */
+  /* USER CODE BEGIN CANTransmit_Task */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END Transmit_Task */
+  /* USER CODE END CANTransmit_Task */
+}
+
+/* USER CODE BEGIN Header_DJIProcess_Task */
+/**
+* @brief Function implementing the DJIProcessTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_DJIProcess_Task */
+__weak void DJIProcess_Task(void *argument)
+{
+  /* USER CODE BEGIN DJIProcess_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END DJIProcess_Task */
 }
 
 /* Private application code --------------------------------------------------*/

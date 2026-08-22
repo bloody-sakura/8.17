@@ -2,7 +2,7 @@
 
 StackType_t transmit_stack;
 
-void Transmit_Task(void *argument)
+void CANTransmit_Task(void *argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = pdMS_TO_TICKS(1); 
@@ -15,7 +15,7 @@ void Transmit_Task(void *argument)
 }
 
 
-void Process_Task(void *argument)
+void ZdriveProcess_Task(void *argument)
 {
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = pdMS_TO_TICKS(6); 
@@ -25,3 +25,10 @@ void Process_Task(void *argument)
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }
+
+void DJIProcess_Task(void *argument)
+{
+    
+}
+
+
