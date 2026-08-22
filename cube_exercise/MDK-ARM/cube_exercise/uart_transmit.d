@@ -47,5 +47,5 @@ cube_exercise/uart_transmit.o: ..\hardware\Src\uart_transmit.c \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\user\Inc\myostask.h \
   ..\hardware\Inc\motor_config.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\ZDrive.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\algorithm\Inc\pid.h
+  ..\hardware\Inc\can_transmit.h ..\algorithm\Inc\pid.h \
+  ..\hardware\Inc\ZDrive.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h

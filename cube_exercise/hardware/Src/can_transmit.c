@@ -1,4 +1,8 @@
 #include "can_transmit.h"
+#include "uart_transmit.h"
+#include "can.h"
+#include "ZDrive.h"
+#include "string.h"
 
 CAN_RxHeaderTypeDef RxHeader0;
 uint8_t RxData0[8];
@@ -13,7 +17,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 
         if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader0, RxData0) == HAL_OK)
         {
-            if (RxHeader0.StdId == 0x202) // 接收电调数据
+            if (RxHeader0.StdId == 0x204) // 接收电调数据
             {
                 memcpy(ESC_Data, RxData0, sizeof(RxData0));
             }
@@ -25,7 +29,7 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
     if (hcan->Instance == CAN1)
     {
-        if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader1, RxData1) == HAL_OK)
+        if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO1, &RxHeader1, RxData1) == HAL_OK)
         {
             if (RxHeader1.IDE == CAN_ID_STD)
                 ZdriveReceive(RxHeader1, RxData1); // 接收Zdrive信号
@@ -57,8 +61,8 @@ void DJIcan_transmit(uint16_t p)
     CAN_TxHeaderTypeDef TxHeader;
     uint32_t TxMailbox2;
     uint8_t TxData[8] = {0};
-    TxData[2] = (((p) >> 8) & 0xFF);
-    TxData[3] = ((p) & 0xFF);
+    TxData[6] = (((p) >> 8) & 0xFF);
+    TxData[7] = ((p) & 0xFF);
 
     TxHeader.StdId = (0x200);
     TxHeader.IDE = CAN_ID_STD;
