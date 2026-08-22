@@ -1,6 +1,6 @@
 #include "myostask.h"
 
-StackType_t transmit_stack;
+
 
 void CANTransmit_Task(void *argument)
 {
@@ -8,8 +8,8 @@ void CANTransmit_Task(void *argument)
     const TickType_t xFrequency = pdMS_TO_TICKS(1); 
     for (;;)
     {
-    can_transmit();
-    can_transmit();
+    Zcan_transmit();
+    Zcan_transmit();
     vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }
@@ -17,6 +17,9 @@ void CANTransmit_Task(void *argument)
 
 void ZdriveProcess_Task(void *argument)
 {
+    QueueInit(&send_queue);
+    ZdriveInit();
+    Zmotor[0].Begin = true;
     TickType_t xLastWakeTime = xTaskGetTickCount();
     const TickType_t xFrequency = pdMS_TO_TICKS(6); 
     for (;;)
@@ -53,7 +56,7 @@ void DJIProcess_Task(void *argument)
 
         uint16_t temp = PID_Process(&DJI.vel_pid, DJI.set_motor_val.Speed, motor_feedback.Speed);
 
-        can_transmit(temp);
+        DJIcan_transmit(temp);
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }

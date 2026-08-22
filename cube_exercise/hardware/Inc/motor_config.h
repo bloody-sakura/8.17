@@ -3,7 +3,6 @@
 
 #include "main.h"
 #include <stdbool.h>
-#include "ZDrive.h"
 typedef struct
 {
     float Angle;
@@ -49,13 +48,12 @@ typedef struct
 }DJIMotor;
 
 
-
 void Get_MotorVal_Feedback(volatile MotorVal* Rotor ,MotorParam* Motor);
 void motor_set_init(DJIMotor* motor,MotorMode motor_mode,float set_motor_angle,float set_motor_speed,float set_motor_torque);
 void motor_pid_init(PID_Typedef *pid,float kp,float ki,float kd);
 
 extern DJIMotor DJI;
-
-extern MotorVal motor_feedback;
+extern uint8_t ESC_Data[8];
+extern volatile MotorVal motor_feedback;
 
 #endif

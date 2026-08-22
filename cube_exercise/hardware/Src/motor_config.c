@@ -1,5 +1,7 @@
 #include "motor_config.h"
 
+uint8_t ESC_Data[8] = {0};
+
 DJIMotor DJI = {
     .motor_param.GearRatio = 36,
     .motor_param.MaxCurrent = 3,

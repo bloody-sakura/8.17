@@ -1,18 +1,18 @@
 #ifndef UART
 #define UART
 
-/*#include "main.h"
+#include "main.h"
 #include "usart.h"
 #include "string.h"
 #include "math.h"
 #include "myostask.h"
 #include "can_transmit.h"
-extern volatile uint8_t rx_buffer[];
-extern volatile uint8_t tx_buffer[];
+extern uint8_t rx_buffer[];
+
 
 void UART_Start_Receive(void);
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size);
-void vofa_transmit();*/
+void vofa_transmit(uint8_t* Data);
 
 
 #endif

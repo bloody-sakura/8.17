@@ -51,10 +51,6 @@ extern "C" {
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
-#include "can_transmit.h"
-#include "ZDrive.h"
-#include "tim_exit.h"
-#include "motor_config.h"
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
