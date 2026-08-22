@@ -1576,6 +1576,21 @@
               <FileType>1</FileType>
               <FilePath>..\hardware\Src\ZDrive.c</FilePath>
             </File>
+            <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio_exit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\gpio_exit.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\Src\led.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
