@@ -45,6 +45,6 @@ cube_exercise/myostask.o: ..\user\Src\myostask.c ..\user\Inc\myostask.h \
   ..\Core\Inc\usart.h ..\hardware\Inc\motor_config.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h ..\hardware\Inc\ZDrive.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\algorithm\Inc\pid.h
+  ..\hardware\Inc\ZDrive.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h \
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h ..\algorithm\Inc\pid.h

@@ -2,11 +2,6 @@
 #define UART
 
 #include "main.h"
-#include "usart.h"
-#include "string.h"
-#include "math.h"
-#include "myostask.h"
-#include "can_transmit.h"
 extern uint8_t rx_buffer[];
 
 

@@ -5329,12 +5329,12 @@ Image component sizes
        428          0          0          0         72       7832   tim.o
         64          0          0          0          4       3792   tim_exit.o
       1692         10         13          0        300      11523   timers.o
-       166          0          0          0          5       4026   uart_transmit.o
+       166          0          0          0          5       4028   uart_transmit.o
        448          0          0          0        264       6863   usart.o
       2560        170          1          0        860       8901   zdrive.o
 
     ----------------------------------------------------------------------
-     34108        288        634        104      23240     295723   Object Totals
+     34108        288        634        104      23240     295725   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        210          0          5          3         12          0   (incl. Padding)
 
@@ -5405,8 +5405,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     37042        484        634        104      23336     296431   Grand Totals
-     37042        484        634        104      23336     296431   ELF Image Totals
+     37042        484        634        104      23336     296433   Grand Totals
+     37042        484        634        104      23336     296433   ELF Image Totals
      37042        484        634        104          0          0   ROM Totals
 
 ==============================================================================

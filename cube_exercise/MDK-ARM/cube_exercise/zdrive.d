@@ -47,5 +47,4 @@ cube_exercise/zdrive.o: ..\hardware\Src\ZDrive.c ..\hardware\Inc\ZDrive.h \
   ..\Core\Inc\usart.h ..\hardware\Inc\motor_config.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h \
-  ..\user\Inc\myostask.h ..\algorithm\Inc\pid.h
+  ..\hardware\Inc\can_transmit.h ..\hardware\Inc\uart_transmit.h

@@ -1,4 +1,9 @@
 #include "uart_transmit.h"
+#include "usart.h"
+#include "string.h"
+#include "math.h"
+#include "myostask.h"
+#include "can_transmit.h"
 uint8_t rx_buffer[5] = {0};
 
 
