@@ -46,14 +46,16 @@ typedef struct
     PID_Typedef vel_pid;
     PID_Typedef pos_pid;
     MotorMode cur_motor_mode;
-}Motor;
+}DJIMotor;
 
 
 
 void Get_MotorVal_Feedback(volatile MotorVal* Rotor ,MotorParam* Motor);
-void motor_set_init(Motor* motor,MotorMode motor_mode,float set_motor_angle,float set_motor_speed,float set_motor_torque);
+void motor_set_init(DJIMotor* motor,MotorMode motor_mode,float set_motor_angle,float set_motor_speed,float set_motor_torque);
 void motor_pid_init(PID_Typedef *pid,float kp,float ki,float kd);
 
+extern DJIMotor DJI;
 
+extern MotorVal motor_feedback;
 
 #endif

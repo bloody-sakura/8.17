@@ -10,7 +10,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData) == HAL_OK)
         {
             if (RxHeader.IDE == CAN_ID_STD)
-                ZdriveReceive(RxHeader, RxData); // 接收Zdrive信号
+            ZdriveReceive(RxHeader, RxData); // 接收Zdrive信号
         }
     }
 }
