@@ -1,5 +1,6 @@
 #include "DJIDrive.h"
-
+#include "pid.h"
+#include "can_transmit.h"
 uint8_t ESC_Data[8] = {0};
 
 DJIMotor DJI = {
@@ -63,3 +64,53 @@ void motor_pid_init(PID_Typedef *pid,float kp,float ki,float kd)
     pid->kd=kd;
 } 
 
+float lenth2angle(float lenth)
+{
+return lenth;
+}
+
+float angle2lenth(float angle)
+{
+return angle;
+}
+void DJI_func(DJIMotor* dji,volatile MotorVal* feedback)
+{
+    switch (dji->motor_mode)
+        {
+        case IDLE:
+        {
+            DJIcan_transmit(0x0);
+        }
+        break;
+        case SPEED:
+        {
+            Get_MotorVal_Feedback(feedback, &dji->motor_param);
+            uint16_t temp = PID_Process(&dji->vel_pid, dji->set_motor_val.Speed, feedback->Speed);
+            DJIcan_transmit(temp);
+        }
+        break;
+
+        case DEGREE:
+        {
+             Get_MotorVal_Feedback(feedback, &dji->motor_param);
+            DJI.set_motor_val.Speed = PID_Process(&dji->pos_pid ,dji->set_motor_val.Angle, feedback->Angle);
+             uint16_t temp = PID_Process(&dji->vel_pid, dji->set_motor_val.Speed, feedback->Speed);
+            DJIcan_transmit(temp);
+        }
+        break;
+
+        case TORQUE:
+        {
+            Get_MotorVal_Feedback(feedback, &dji->motor_param);
+            uint16_t temp = PID_Process(&dji->tor_pid,dji->set_motor_val.Torque, feedback->Torque);
+            DJIcan_transmit(temp);
+        }
+
+        }
+
+}
+
+void state_func()
+{
+    
+}

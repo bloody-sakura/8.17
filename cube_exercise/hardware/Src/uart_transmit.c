@@ -10,7 +10,7 @@ uint8_t rx_buffer[5] = {0};
 
 void UART_Start_Receive(void)//开启中断函数
 {
-    HAL_UARTEx_ReceiveToIdle_IT(&huart1,rx_buffer,sizeof(rx_buffer));//空闲中断开启函数
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_buffer,sizeof(rx_buffer));//空闲中断开启函数
     
 }
 
@@ -43,7 +43,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 
                 HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);}
 
-        HAL_UARTEx_ReceiveToIdle_IT(&huart1, rx_buffer, sizeof(rx_buffer));
+        HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buffer, sizeof(rx_buffer));
         //重新开启空闲回调
 
     }
@@ -56,6 +56,6 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 
 void vofa_transmit(uint8_t* Data)
 {
-    HAL_UART_Transmit(&huart1,Data,sizeof(Data),100);
+    HAL_UART_Transmit_DMA(&huart1,Data,sizeof(Data));
 }
 

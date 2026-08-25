@@ -68,6 +68,13 @@ const osThreadAttr_t DJIProcessTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for STATUSTask */
+osThreadId_t STATUSTaskHandle;
+const osThreadAttr_t STATUSTask_attributes = {
+  .name = "STATUSTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -77,6 +84,7 @@ const osThreadAttr_t DJIProcessTask_attributes = {
 void ZdriveProcess_Task(void *argument);
 void CANTransmit_Task(void *argument);
 void DJIProcess_Task(void *argument);
+void Status_Task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -115,6 +123,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of DJIProcessTask */
   DJIProcessTaskHandle = osThreadNew(DJIProcess_Task, NULL, &DJIProcessTask_attributes);
+
+  /* creation of STATUSTask */
+  STATUSTaskHandle = osThreadNew(Status_Task, NULL, &STATUSTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -178,6 +189,24 @@ __weak void DJIProcess_Task(void *argument)
     osDelay(1);
   }
   /* USER CODE END DJIProcess_Task */
+}
+
+/* USER CODE BEGIN Header_Status_Task */
+/**
+* @brief Function implementing the STATUSTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Status_Task */
+__weak void Status_Task(void *argument)
+{
+  /* USER CODE BEGIN Status_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Status_Task */
 }
 
 /* Private application code --------------------------------------------------*/

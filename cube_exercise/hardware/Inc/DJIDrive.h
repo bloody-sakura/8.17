@@ -22,8 +22,9 @@ typedef enum
     IDLE=0,
     SPEED,
     DEGREE,
+    TORQUE,
+    LENTH,
 } MotorMode;
-
 
 typedef struct
 {
@@ -44,6 +45,7 @@ typedef struct
     MotorMode motor_mode;
     PID_Typedef vel_pid;
     PID_Typedef pos_pid;
+    PID_Typedef tor_pid;
     MotorMode cur_motor_mode;
 }DJIMotor;
 
@@ -51,7 +53,7 @@ typedef struct
 void Get_MotorVal_Feedback(volatile MotorVal* Rotor ,MotorParam* Motor);
 void motor_set_init(DJIMotor* motor,MotorMode motor_mode,float set_motor_angle,float set_motor_speed,float set_motor_torque);
 void motor_pid_init(PID_Typedef *pid,float kp,float ki,float kd);
-
+void DJI_func(DJIMotor* dji,volatile MotorVal* feedback);
 extern DJIMotor DJI;
 extern uint8_t ESC_Data[8];
 extern volatile MotorVal motor_feedback;

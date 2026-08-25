@@ -43,4 +43,5 @@ cube_exercise/djidrive.o: ..\hardware\Src\DJIDrive.c \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h
+  ..\Core\Inc\usart.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  ..\algorithm\Inc\pid.h ..\hardware\Inc\can_transmit.h

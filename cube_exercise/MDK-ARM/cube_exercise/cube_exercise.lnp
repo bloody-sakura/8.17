@@ -47,6 +47,7 @@
 "cube_exercise\gpio_exit.o"
 "cube_exercise\led.o"
 "cube_exercise\djidrive.o"
+"cube_exercise\solenoid.o"
 "cube_exercise\pid.o"
 --strict --scatter "cube_exercise\cube_exercise.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

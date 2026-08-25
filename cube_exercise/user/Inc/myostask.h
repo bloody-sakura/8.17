@@ -11,7 +11,8 @@
 #include "can_transmit.h"
 #include "pid.h"
 #include "ZDrive.h"
-
+#include "beep.h"
+#include "led.h"
 
 
 #endif

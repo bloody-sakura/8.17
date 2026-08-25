@@ -1,4 +1,5 @@
-cube_exercise/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
+cube_exercise/solenoid.o: ..\hardware\Src\Solenoid.c \
+  ..\hardware\Inc\Solenoid.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -42,4 +43,4 @@ cube_exercise/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\hardware\Inc\tim_exit.h
+  ..\Core\Inc\usart.h
