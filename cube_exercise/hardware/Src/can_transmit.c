@@ -21,6 +21,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             {
                 memcpy(ESC_Data, RxData0, sizeof(RxData0));
             }
+
         }
     }
 }

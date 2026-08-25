@@ -105,12 +105,8 @@ void DJI_func(DJIMotor* dji,volatile MotorVal* feedback)
             uint16_t temp = PID_Process(&dji->tor_pid,dji->set_motor_val.Torque, feedback->Torque);
             DJIcan_transmit(temp);
         }
-
+        
         }
 
 }
 
-void state_func()
-{
-    
-}

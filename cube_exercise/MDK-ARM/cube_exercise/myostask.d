@@ -47,4 +47,5 @@ cube_exercise/myostask.o: ..\user\Src\myostask.c ..\user\Inc\myostask.h \
   ..\hardware\Inc\can_transmit.h ..\algorithm\Inc\pid.h \
   ..\hardware\Inc\ZDrive.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\math.h \
-  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h
+  D:\Keil5\ARM\ARMCLANG\Bin\..\include\string.h ..\hardware\Inc\beep.h \
+  ..\hardware\Inc\led.h

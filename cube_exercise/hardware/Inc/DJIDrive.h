@@ -23,7 +23,6 @@ typedef enum
     SPEED,
     DEGREE,
     TORQUE,
-    LENTH,
 } MotorMode;
 
 typedef struct

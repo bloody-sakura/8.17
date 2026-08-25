@@ -48,4 +48,5 @@ cube_exercise/uart_transmit.o: ..\hardware\Src\uart_transmit.c \
   ..\hardware\Inc\DJIDrive.h \
   D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\hardware\Inc\can_transmit.h ..\algorithm\Inc\pid.h \
-  ..\hardware\Inc\ZDrive.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h
+  ..\hardware\Inc\ZDrive.h D:\Keil5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  ..\hardware\Inc\beep.h ..\hardware\Inc\led.h
